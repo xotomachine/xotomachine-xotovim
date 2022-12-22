@@ -1,13 +1,13 @@
-# XotoVim: Frontend Neovim Config
+# XotoVim: Neovim Config
 
 [![Last commit](https://img.shields.io/github/last-commit/xotomachine/xotomachine-xotovim?style=for-the-badge)](https://github.com/xotomachine/xotomachine-xotovim/commits/development)
 ![Stars](https://img.shields.io/github/stars/xotomachine/xotomachine-xotovim?style=for-the-badge)
 ![License](https://img.shields.io/github/license/xotomachine/xotomachine-xotovim?style=for-the-badge)
 ![Neovim Version](https://img.shields.io/badge/For%20Neovim-0.7+-yellowgreen?style=for-the-badge&logo=neovim&logoColor=d8abbb&color=d8abbb)
 
-### A non-minimal Neovim config built to work most efficiently with Frontend Development
+### A non-minimal Neovim config built to work most efficiently with any development
 
-## Features
+## Features 💠
 
 - Recommended default theme: [Tokyonight](https://github.com/folke/tokyonight.nvim)
 - Configured for Frontend Development
@@ -24,13 +24,13 @@
 
 And of course usage of [telescope](https://github.com/nvim-telescope/telescope.nvim), [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua), [barbar](https://github.com/romgrk/barbar.nvim), [cmp](https://github.com/hrsh7th/nvim-cmp), [treesitter](https://github.com/nvim-treesitter/nvim-treesitter), [blankline](https://github.com/lukas-reineke/indent-blankline.nvim) & more!
 
-## Screenshots
+## Screenshots 📸
 
 Dashboard
 
 ![Dashboard](./.screenshots/1-alpha.png)
 
-## Installation
+## Installation ⚡️
 
 Copy it into your terminal:
 
@@ -40,23 +40,16 @@ bash <(curl -s https://raw.githubusercontent.com/xotomachine/xotomachine-xotovim
 
 After install configuration:
 
-1. Treesitter Languages are <ins>not installed</ins> by default.\
-   Make sure to run `:TSInstall <lang>` for specific language you want to install.
+1. Treesitter Languages are <ins>installed</ins> by default.\
+   If you wish to add more of them make sure to run `:TSInstall <lang>` for specific language you want to install and configure them in the lsp folder. 
 2. LSP servers are enabled by default. You can check installed LSP servers by :Mason command.
 
-## Configuration
+## Configuration 💻
 
 To change XotoVim related config use the `config.lua` file.\
 To change vim settings use the `settings.lua` file.
 
-## Keybindings
-
-Currently I have no idea how to write for you my whole workflow of using XotoVim config in React.js projects I am working on,\
-but I can write you the most useful custom key bindings by the frequency I use them.
-
-Space (SPC) is my Leader key.
-
-### Next 3.0 list (~mid september)
+### Next list for updates 📝
 
 | Description                                     | Progress                                                           |
 |-------------------------------------------------|--------------------------------------------------------------------|
@@ -65,7 +58,7 @@ Space (SPC) is my Leader key.
 | Better configuration of additional LSPs         | ![Planned](https://progress-bar.dev/0/?title=planned&color=b8860b) |
 | Better support for null-ls and local formatting | ![Planned](https://progress-bar.dev/0/?title=planned&color=b8860b) |
 
-## Future Todo
+## Future Todo 🔥
 
 | Description                                            | Progress                                                           |
 |--------------------------------------------------------|--------------------------------------------------------------------|
@@ -76,7 +69,7 @@ Space (SPC) is my Leader key.
 | More built-in themes (lazy loaded)                     | ![Planned](https://progress-bar.dev/0/?title=planned&color=b8860b) |
 | Better UI customization when nvim 0.8 will be in ready | ![Planned](https://progress-bar.dev/0/?title=planned&color=b8860b) |
 
-<summary>Done</summary>
+## Done ✅
 
 | Description                                  | Progress                                                       |
 |----------------------------------------------|----------------------------------------------------------------|
