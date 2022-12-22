@@ -1,6 +1,7 @@
 local actions = require('telescope.actions')
 local previewers = require('telescope.previewers')
 local builtin = require('telescope.builtin')
+-- local icons = Xoto.icons;
 
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('repo')
@@ -9,22 +10,17 @@ require("telescope").load_extension("git_worktree")
 -- require("telescope").load_extension("notify")
 
 local git_icons = {
-  added = "",
-  changed = "柳",
+  -- added = icons.gitAdd,
+  -- changed = icons.gitChange,
   copied = ">",
-  unstaged = "",
-  staged = "",
-  unmerged = "",
-  renamed = "➜",
-  untracked = "",
-  deleted = "",
-  ignored = "◌"
+  -- deleted = icons.gitRemove,
+  renamed = "➡",
+  unmerged = "‡",
+  untracked = "?",
 }
 
 require('telescope').setup {
-  
   defaults = {
-
     vimgrep_arguments = {
       'rg',
       '--color=never',
@@ -34,33 +30,14 @@ require('telescope').setup {
       '--column',
       '--smart-case'
     },
-
     layout_config = {
-      horizontal = { preview_cutoff = 120 },
+      horizontal = {
+        preview_cutoff = 120,
+      },
       prompt_position = "top",
     },
-    
-    border = {},
-    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
-
     file_sorter = require('telescope.sorters').get_fzy_sorter,
     prompt_prefix = '  ',
-    
-    selection_caret = " ",
-    entry_prefix = "  ",
-    
-    initial_mode = "insert",
-    selection_strategy = "reset",
-    layout_strategy = "horizontal",
-    -- layout_config = {
-    --   horizontal = {
-    --     mirror = false,
-    --   },
-    --   vertical = {
-    --     mirror = false,
-    --   },
-    -- },
-    
     color_devicons = true,
 
     git_icons = git_icons,
@@ -70,9 +47,6 @@ require('telescope').setup {
     file_previewer = require('telescope.previewers').vim_buffer_cat.new,
     grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
     qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
-    
-    -- Developer configurations: Not meant for general override
-    -- buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker,
 
     mappings = {
       i = {
@@ -91,7 +65,6 @@ require('telescope').setup {
       }
     }
   },
-
   extensions = {
     fzf = {
       override_generic_sorter = false,
@@ -146,12 +119,16 @@ M.edit_neovim = function()
       color_devicons = true,
       cwd = "~/.config/nvim",
       previewer = false,
-      prompt_title = "xotovim dotfiles",
+      prompt_title = "XotoVim Dotfiles",
       sorting_strategy = "ascending",
-      winblend = 0,
+      winblend = 4,
       layout_config = {
-        horizontal = {mirror = false},
-        vertical = {mirror = false},
+        horizontal = {
+          mirror = false,
+        },
+        vertical = {
+          mirror = false,
+        },
         prompt_position = "top",
       },
     }))
@@ -167,7 +144,7 @@ M.command_history = function()
   builtin.command_history (
     require('telescope.themes').get_dropdown({
       color_devicons = true,
-      winblend = 0,
+      winblend = 4,
       layout_config = {
         width = function(_, max_columns, _)
           return math.min(max_columns, 150)

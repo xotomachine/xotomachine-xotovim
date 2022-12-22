@@ -134,7 +134,7 @@ if vim.fn.has("nvim-0.8") then
     -- Diagnostics
     
     -- autopilot
-    -- vim.api.nvim_set_hl(0, 'CopilotSuggestion', { bg = "None", fg = tokioColor.dark3 });
+    vim.api.nvim_set_hl(0, 'CopilotSuggestion', { bg = "None", fg = tokioColor.dark3 });
     -- vim.api.nvim_set_hl(0, 'GhostTextGroup', { bg = "None", fg = tokioColor.dark3 });
     
     -- Misc

@@ -33,8 +33,14 @@ return function(opts)
         ["stories"] = "{stories.tsx,stories.ts,stories.js,*.stories.tsx,*.stories.ts,*.stories.js}",
         ["test"] = "*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}",
         ["tests"] = "*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}",
-        ["ts"] = {"*.{ts,tsx}", "!*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}"},
-        ["tsx"] = {"*.tsx","!*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}"},
+        ["ts"] = {
+          "*.{ts,tsx}",
+          "!*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}"
+        },
+        ["tsx"] = {
+          "*.tsx",
+          "!*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}"
+        },
         ["xml"] = "*.xml",
       }
   opts.pattern = opts.pattern or "%s"
@@ -81,7 +87,10 @@ return function(opts)
         table.insert(args, string.format(opts.pattern, pattern))
       end
 
-      return flatten {args, { "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" }}
+      return flatten {
+        args,
+        { "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" },
+      }
     end,
     entry_maker = make_entry.gen_from_vimgrep(opts),
     cwd = opts.cwd,
