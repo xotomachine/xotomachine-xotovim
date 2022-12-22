@@ -49,7 +49,7 @@ After install configuration:
 To change XotoVim related config use the `config.lua` file.\
 To change vim settings use the `settings.lua` file.
 
-### Next list for updates 📝
+## Next list for updates 📝
 
 | Description                                     | Progress                                                           |
 |-------------------------------------------------|--------------------------------------------------------------------|
