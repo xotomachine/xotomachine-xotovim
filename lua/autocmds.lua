@@ -1,11 +1,11 @@
-vim.api.nvim_create_autocmd("BufWritePost", { pattern = "plugins.lua", command = "source <afile> | PackerSync" }) -- Auto sync plugins on save of plugins.lua
-vim.api.nvim_create_autocmd("TextYankPost", { callback = function() vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 100 }) end }) -- Highlight on yank
-vim.api.nvim_create_autocmd("BufRead", { pattern = "*/node_modules/*", command = "lua vim.diagnostic.disable(0)" }) -- Disable diagnostics in node_modules (0 is current buffer only)
+vim.api.nvim_create_autocmd("BufWritePost", { pattern = "plugins.lua", command = "source <afile> | PackerSync" }) -- auto sync plugins on save of plugins.lua
+vim.api.nvim_create_autocmd("TextYankPost", { callback = function() vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 100 }) end }) -- highlight on yank
+vim.api.nvim_create_autocmd("BufRead", { pattern = "*/node_modules/*", command = "lua vim.diagnostic.disable(0)" }) -- disable diagnostics in node_modules (0 is current buffer only)
 vim.api.nvim_create_autocmd("BufNewFile", { pattern = "*/node_modules/*", command = "lua vim.diagnostic.disable(0)" })
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = { "*.txt", "*.md", "*.tex" }, command = "setlocal spell" }) -- Enable spell checking for certain file types
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = { "*.txt", "*.md", "*.tex" }, command = "setlocal spell" }) -- enable spell checking for certain file types
 
 
-local present, _ = pcall(require, "which-key") -- Attach specific keybindings in which-key for specific filetypes
+local present, _ = pcall(require, "which-key") -- attach specific keybindings in which-key for specific filetypes
 if not present then return end
 local _, pwk = pcall(require, "plugins.which-key")
 
@@ -26,11 +26,13 @@ vim.api.nvim_create_autocmd("BufEnter", { pattern = { "*test.js", "*test.ts", "*
 vim.api.nvim_create_autocmd("FileType", { pattern = "spectre_panel",
   callback = function() pwk.attach_spectre(0) end })
 
--- Winbar (for nvim 0.8+)
+-- winbar (for nvim 0.8+)
 if vim.fn.has('nvim-0.8') == 1 then
   vim.api.nvim_create_autocmd({ "CursorMoved", "BufWinEnter", "BufFilePost" }, {
     callback = function()
-      local winbar_filetype_exclude = { "help", "startify", "dashboard", "packer", "neogitstatus", "NvimTree", "Trouble", "alpha", "lir", "Outline", "spectre_panel", "TelescopePrompt", "DressingInput", "DressingSelect", "neotest-summary" }
+      local winbar_filetype_exclude = { "help", "startify", "dashboard", "packer", "neogitstatus", "NvimTree", "Trouble", "alpha", "lir", "Outline", "spectre_panel", "TelescopePrompt", 
+      -- "DressingInput", "DressingSelect", 
+      "neotest-summary" }
 
       if (vim.api.nvim_win_get_config(0).relative ~= "") then
         return

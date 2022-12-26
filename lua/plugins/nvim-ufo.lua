@@ -7,9 +7,9 @@ end
 -- │ Keymappings                                              │
 -- ╰──────────────────────────────────────────────────────────╯
 -- Using ufo provider need remap `zR` and `zM`. zr is additional.
-vim.keymap.set('n', 'zR', ufo.openAllFolds)
-vim.keymap.set('n', 'zM', ufo.closeAllFolds)
-vim.keymap.set('n', 'zr', ufo.openFoldsExceptKinds)
+-- vim.keymap.set('n', 'zR', ufo.openAllFolds)
+-- vim.keymap.set('n', 'zM', ufo.closeAllFolds)
+-- vim.keymap.set('n', 'zr', ufo.openFoldsExceptKinds)
 
 local M = {}
 

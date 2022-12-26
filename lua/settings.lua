@@ -28,6 +28,7 @@ local options = {
   swapfile       = false, --- swap not needed
   tabstop        = 2, --- insert 2 spaces for a tab
   termguicolors  = true, --- correct terminal colors
+
   timeoutlen     = 200, --- faster completion (cannot be lower than 200 because then commenting doesn't work)
   undofile       = true, --- sets undo to file
   updatetime     = 100, --- faster completion
@@ -36,7 +37,7 @@ local options = {
   wrap           = true, --- display long lines as just one line
   writebackup    = false, --- not needed
   
-  -- Neovim defaults
+  -- neovim defaults
   autoindent     = true, --- good auto indent
   backspace      = "indent,eol,start", --- making sure backspace works
   backup         = false, --- recommended by coc
@@ -45,14 +46,13 @@ local options = {
   errorbells     = false, --- disables sound effect for errors
   fileencoding   = "utf-8", --- the encoding written to file
   incsearch      = true, --- start searching before pressing enter
-  showmode       = false, --- don't show things like -- insert -- anymore
+  showmode       = false, --- don't show things like insert anymore
 }
 
 local globals = {
   mapleader                   = ' ', --- map leader key to spc
   speeddating_no_mappings     = 1, --- disable default mappings for speeddating
 }
-
 
 vim.opt.shortmess:append('c');
 vim.opt.formatoptions:remove('c');

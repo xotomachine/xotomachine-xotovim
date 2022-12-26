@@ -26,9 +26,9 @@ end
 
 -- M.toggle_quicklist = function()
 --   if fn.empty(fn.filter(fn.getwininfo(), 'v:val.quickfix')) == 1 then
---     vim.cmd('copen')
+--     vim.cmd('open')
 --   else
---     vim.cmd('cclose')
+--     vim.cmd('close')
 --   end
 -- end
 

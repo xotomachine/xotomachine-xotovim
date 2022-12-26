@@ -3,19 +3,18 @@
 [![Last commit](https://img.shields.io/github/last-commit/xotomachine/xotomachine-xotovim?style=for-the-badge)](https://github.com/xotomachine/xotomachine-xotovim/commits/development)
 ![Stars](https://img.shields.io/github/stars/xotomachine/xotomachine-xotovim?style=for-the-badge)
 ![License](https://img.shields.io/github/license/xotomachine/xotomachine-xotovim?style=for-the-badge)
-![Neovim Version](https://img.shields.io/badge/For%20Neovim-0.7+-yellowgreen?style=for-the-badge&logo=neovim&logoColor=d8abbb&color=d8abbb)
+![Neovim Version](https://img.shields.io/badge/For%20Neovim-0.8+-yellowgreen?style=for-the-badge&logo=neovim&logoColor=d8abbb&color=d8abbb)
 
 ### A non-minimal Neovim config built to work most efficiently with any development
 
 ## Features 💠
 
 - Recommended default theme: [Tokyonight](https://github.com/folke/tokyonight.nvim)
-- Configured for Frontend Development
 - Highly performant even with a lot of plugins
 - Lazy loaded
 - Extendable LSP configuration
 - Support for [TailwindCSS](https://tailwindcss.com/) with highlighted colors
-- Support for [Tabnine](https://www.tabnine.com/)
+- Support for [Tabnine](https://www.tabnine.com/) and copilot
 - JSON autocompletion for most popular Frontend config
 - NPM packages autocompletion
 - Internal [Jest](https://github.com/facebook/jest) testing

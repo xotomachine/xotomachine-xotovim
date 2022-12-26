@@ -1,5 +1,11 @@
 local lspkind = require('lspkind')
 
+local has_words_before = function()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
 local cmp_tabnine_status_ok, tabnine = pcall(require, "cmp_tabnine.config")
 if not cmp_tabnine_status_ok then
   return
@@ -48,8 +54,7 @@ local source_mapping = {
   zsh = XotoVimGlobal.icons.terminal .. 'ZSH',
 }
 
-local buffer_option = {
-  -- Complete from all visible buffers (splits)
+local buffer_option = { -- complete from all visible buffers (splits)
   get_bufnrs = function()
     local bufs = {}
     for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -79,12 +84,14 @@ cmp.setup {
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expandable() then
-        luasnip.expand()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      elseif check_backspace() then
-        fallback()
+      -- elseif luasnip.expandable() then
+      --   luasnip.expand()
+      -- elseif luasnip.expand_or_jumpable() then
+      --   luasnip.expand_or_jump()
+      -- elseif has_words_before() then
+      --   cmp.complete()
+      -- elseif check_backspace() then
+      --   fallback()
       else
         fallback()
       end
@@ -183,9 +190,7 @@ cmp.setup {
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Cmdline Setup                                            │
 -- ╰──────────────────────────────────────────────────────────╯
-
--- `/` cmdline setup.
-cmp.setup.cmdline('/', {
+cmp.setup.cmdline('/', { -- `/` cmdline setup.
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = 'buffer' }

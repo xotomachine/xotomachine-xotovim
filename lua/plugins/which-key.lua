@@ -113,11 +113,12 @@ local normal_mode_mappings = {
   ["v"] = { '<C-W>v', 'split right' },
   -- ["b"] = { '<C-W>s', 'split below' },
   -- ["q"] = { 'quicklist' },
+  -- ['E'] = { '<cmd>NvimTreeFocus<CR>', 'explorer focus' },
   ['e'] = { '<cmd>NvimTreeToggle<CR>', 'explorer' },
   ['r'] = { '<cmd>Ranger<CR>', 'ranger' },
-  -- ['E'] = { '<cmd>NvimTreeFocus<CR>', 'explorer focus' },
   ["w"] = { "<cmd>w!<CR>", "save" },
   ["x"] = { "<cmd>q!<CR>", "quit" },
+  ["t"] = { '<cmd>ToggleTerm<CR>', 'terminal' },
 
   [";"] = {
     name = "xotovim",
@@ -130,7 +131,6 @@ local normal_mode_mappings = {
     u = { "<cmd>PackerUpdate<cr>", "update" },
   },
 
-
   a = {
     name = "actions",
     -- c = { 'comment box' },
@@ -139,10 +139,9 @@ local normal_mode_mappings = {
     s = { '<cmd>LspToggleAutoFormat<CR>', 'format on save' },
   },
 
-  t = {
-    name = "terminal",
-    t = { '<cmd>ToggleTerm direction=float<CR>', 'terminal float' },
-  },
+  -- t = {
+  --   name = "terminal",
+  -- },
 
   b = {
     name = "buffer",
@@ -156,14 +155,10 @@ local normal_mode_mappings = {
     s = { '<cmd>BufferPick<CR>', 'search buffer' },
   },
 
-  -- l = {
-  --   name = "lsp",
-  -- },
-
   l = {
     name = "lsp",
-    -- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "code action" },
-    a = { 'code action' },
+    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "code action" },
+    -- a = { 'code action' },
     b = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "buffer diagnostics" },
     w = { '<cmd>Telescope diagnostics wrap_results=true<CR>', 'workspace diagnostics' },
     -- D = { '<cmd>TroubleToggle<CR>', 'local diagnostics' },
@@ -219,7 +214,6 @@ local normal_mode_mappings = {
 
   -- P = {
   --   name = "packer",
-
   -- },
 
   g = {
@@ -296,23 +290,22 @@ local normal_mode_mappings = {
   f = {
     name = "find",
     -- d = { '<cmd>lua require("plugins.telescope").edit_neovim()<CR>', 'dotfiles' },
-    s = { '<cmd>Telescope search_history theme=dropdown<CR>', 'search history' },
     -- b = { '<cmd>Telescope git_branches<cr>', 'checkout branch' },
-    c = { '<cmd>lua require("telescope.builtin").colorscheme({enable_preview = true})<cr>', 'colorscheme with preview'},
-    C = { '<cmd>Telescope commands<cr>', 'commands' },
     -- f = { '<cmd>Telescope find_files<cr>', 'find file' },
     -- h = { '<cmd>Telescope help_tags<cr>', 'find help' },
+    -- M = { '<cmd>Telescope man_pages<cr>', 'man pages' },
+    -- R = { '<cmd>Telescope registers<cr>', 'registers' },
+    s = { '<cmd>Telescope search_history theme=dropdown<CR>', 'search history' },
+    c = { '<cmd>lua require("telescope.builtin").colorscheme({enable_preview = true})<cr>', 'colorscheme with preview'},
+    C = { '<cmd>Telescope commands<cr>', 'commands' },
     f = { '<cmd>Telescope oldfiles hidden=true<CR>', 'file history' },
     H = { '<cmd>Telescope highlights<cr>', 'highlighted groups' },
     g = { '<cmd>lua require("plugins.telescope").command_history()<CR>', 'command history' },
 
-    -- M = { '<cmd>Telescope man_pages<cr>', 'man pages' },
     r = { '<cmd>Telescope oldfiles<cr>', 'recent file' },
-    -- R = { '<cmd>Telescope registers<cr>', 'registers' },
     t = { '<cmd>Telescope live_grep<cr>', 'text' },
     k = { '<cmd>Telescope keymaps<cr>', 'keymaps' },
   },
-
 
   ["s"] = {
     name = "session",
@@ -322,7 +315,6 @@ local normal_mode_mappings = {
     l = { '<cmd>SessionManager load_last_session<CR>', 'last session' },
     s = { '<cmd>SessionManager save_current_session<CR>', 'save session' },
   },
-
 
   -- t = {
   --   name = "table mode",
@@ -335,11 +327,6 @@ local visual_mode_mappings = {
   -- single
   ["s"] = { "<cmd>'<,'>sort<CR>", 'sort' },
   ["/"] = { "<Plug>(comment_toggle_linewise_current)", "comment" },
-  -- a = {
-  --   name = "actions",
-  --   c = { 'comment box' },
-  -- },
-
   l = {
     name = "lsp",
     a = { 'range code action' },

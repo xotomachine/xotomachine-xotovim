@@ -8,12 +8,12 @@ local hl_group = "LineNr"
 
 gps.setup({
   icons = {
-    ["class-name"] = "%#CmpItemKindClass#" .. icons.class .. "%*" .. "", -- Classes and class-like objects
-    ["hook-name"] = "%#CmpItemKindMethodDefault#" .. icons.hook .. "%*" .. "", -- React Hooks
-    ["function-name"] = "%#CmpItemKindFunction#" .. icons.func .. "%*" .. "", -- Functions
-    ["method-name"] = "%#CmpItemKindMethod#" .. icons.method .. "%*" .. "", -- Methods (functions inside class-like objects)
-    ["container-name"] = "%#CmpItemKindProperty#" .. icons.object .. "%*" .. "", -- Containers (example: lua tables)
-    ["tag-name"] = "%#CmpItemKindKeyword#" .. icons.tag .. "%*" .. " ", -- Tags (example: html tags)
+    ["class-name"] = "%#CmpItemKindClass#" .. icons.class .. "%*" .. "", -- classes and class-like objects
+    ["hook-name"] = "%#CmpItemKindMethodDefault#" .. icons.hook .. "%*" .. "", -- react hooks
+    ["function-name"] = "%#CmpItemKindFunction#" .. icons.func .. "%*" .. "", -- functions
+    ["method-name"] = "%#CmpItemKindMethod#" .. icons.method .. "%*" .. "", -- methods (functions inside class-like objects)
+    ["container-name"] = "%#CmpItemKindProperty#" .. icons.object .. "%*" .. "", -- containers (example: lua tables)
+    ["tag-name"] = "%#CmpItemKindKeyword#" .. icons.tag .. "%*" .. " ", -- tags (example: html tags)
     ["mapping-name"] = "%#CmpItemKindProperty#" .. icons.object .. "%*" .. "",
     ["sequence-name"] = "%CmpItemKindProperty#" .. icons.array .. "%*" .. "",
     ["null-name"] = "%CmpItemKindField#" .. icons.field .. "%*" .. "",
@@ -31,26 +31,16 @@ gps.setup({
     ["time-name"] = "%CmpItemKindValue#" .. icons.watch .. "%*" .. "",
     ["module-name"] = "%CmpItemKindModule#" .. icons.module .. "%*" .. "",
   },
-
-  -- Disable any languages individually over here
-  -- Icons can be set here too for some specific languages (check in gps source code)
-  -- Any language not disabled here is enabled by default
-  languages = {
+  
+  languages = { -- disable any languages individually over here -- icons can be set here too for some specific languages (check in gps source code) -- any language not disabled here is enabled by default
     ["html"] = false,
     ["tsx"] = {
-      ["hook-name"] = "%#CmpItemKindMethodDefault#" .. icons.hook .. "%*" .. "", -- React Hooks
+      ["hook-name"] = "%#CmpItemKindMethodDefault#" .. icons.hook .. "%*" .. "", -- react hooks
     }
   },
 
   separator = " " .. "%#" .. hl_group .. "#" .. XotoVimGlobal.icons.caretRight .. "%*",
-
-  -- limit for amount of context shown
-  -- 0 means no limit
-  -- Note: to make use of depth feature properly, make sure your separator isn't something that can appear
-  -- in context names (eg: function names, class names, etc)
-  depth = 0,
-
-  -- indicator used when context is hits depth limit
-  depth_limit_indicator = "..",
+  depth = 0, -- limit for amount of context shown -- 0 means no limit -- note: to make use of depth feature properly, make sure your separator isn't something that can appear -- in context names (eg: function names, class names, etc)
+  depth_limit_indicator = "..", -- indicator used when context is hits depth limit
   text_hl = hl_group
 })

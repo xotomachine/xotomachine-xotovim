@@ -8,54 +8,46 @@ if not present_dapui or not present_dap or not present_virtual_text then
 end
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ DAP Virtual Text Setup                                   │
+-- │ dap virtual text setup                                   │
 -- ╰──────────────────────────────────────────────────────────╯
 dap_vt.setup({
   enabled = true, -- enable this plugin (the default)
   enabled_commands = true, -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
-  highlight_changed_variables = true, -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText
+  highlight_changed_variables = true, -- highlight changed values with nvimdapvirtualtextchanged, else always nvimdapvirtualtext
   highlight_new_as_changed = false, -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
   show_stop_reason = true, -- show stop reason when stopped for exceptions
   commented = false, -- prefix virtual text with comment string
   only_first_definition = true, -- only show virtual text at first definition (if there are multiple)
   all_references = false, -- show virtual text on all all references of the variable (not only definitions)
-  filter_references_pattern = '<module', -- filter references (not definitions) pattern when all_references is activated (Lua gmatch pattern, default filters out Python modules)
+  filter_references_pattern = '<module', -- filter references (not definitions) pattern when all_references is activated (lua gmatch pattern, default filters out python modules)
 
-  -- Experimental Features:
+  -- experimental features :
   virt_text_pos = 'eol', -- position of virtual text, see `:h nvim_buf_set_extmark()`
-  all_frames = false, -- show virtual text for all stack frames not only current. Only works for debugpy on my machine.
+  all_frames = false, -- show virtual text for all stack frames not only current. only works for debugpy on my machine.
   virt_lines = false, -- show virtual lines instead of virtual text (will flicker!)
   virt_text_win_col = nil, -- position the virtual text at a fixed window column (starting from the first text column) ,
 })
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ DAP UI Setup                                             │
+-- │ dap ui setup                                             │
 -- ╰──────────────────────────────────────────────────────────╯
 dapui.setup({
   icons = { expanded = "▾", collapsed = "▸" },
   mappings = {
-    -- Use a table to apply multiple mappings
-    expand = { "<CR>", "<2-LeftMouse>" },
+    expand = { "<CR>", "<2-LeftMouse>" }, -- use a table to apply multiple mappings
     open = "o",
     remove = "d",
     edit = "e",
     repl = "r",
     toggle = "t",
   },
-  -- Expand lines larger than the window
-  -- Requires >= 0.7
-  expand_lines = vim.fn.has("nvim-0.7"),
-  -- Layouts define sections of the screen to place windows.
-  -- The position can be "left", "right", "top" or "bottom".
-  -- The size specifies the height/width depending on position. It can be an Int
-  -- or a Float. Integer specifies height/width directly (i.e. 20 lines/columns) while
-  -- Float value specifies percentage (i.e. 0.3 - 30% of available lines/columns)
-  -- Elements are the elements shown in the layout (in order).
-  -- Layouts are opened in order so that earlier layouts take priority in window sizing.
-  layouts = {
+  
+  expand_lines = vim.fn.has("nvim-0.7"), -- expand lines larger than the window -- requires >= 0.7
+  
+  layouts = { -- layouts define sections of the screen to place windows. -- the position can be "left", "right", "top" or "bottom". -- the size specifies the height/width depending on position. it can be an int -- or a float. integer specifies height/width directly (i.e. 20 lines/columns) while -- float value specifies percentage (i.e. 0.3 - 30% of available lines/columns) -- elements are the elements shown in the layout (in order). -- layouts are opened in order so that earlier layouts take priority in window sizing.
     {
       elements = {
-        -- Elements can be strings or table with id and size keys.
+        -- elements can be strings or table with id and size keys.
         { id = "scopes", size = 0.25 },
         "breakpoints",
         "stacks",
@@ -74,25 +66,25 @@ dapui.setup({
     },
   },
   floating = {
-    max_height = nil, -- These can be integers or a float between 0 and 1.
-    max_width = nil, -- Floats will be treated as percentage of your screen.
-    border = XotoVimGlobal.ui.float.border, -- Border style. Can be "single", "double"
+    max_height = nil, -- these can be integers or a float between 0 and 1.
+    max_width = nil, -- floats will be treated as percentage of your screen.
+    border = XotoVimGlobal.ui.float.border, -- border style. can be "single", "double"
     mappings = {
       close = { "q", "<Esc>" },
     },
   },
   windows = { indent = 1 },
   render = {
-    max_type_length = nil, -- Can be integer or nil.
+    max_type_length = nil, -- can be integer or nil.
   }
 })
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ DAP Setup                                                │
+-- │ dap setup                                                │
 -- ╰──────────────────────────────────────────────────────────╯
 dap.set_log_level('TRACE');
 
--- Automatically open UI
+-- automatically open ui
 dap.listeners.after.event_initialized['dapui_config'] = function()
   dapui.open();
   shade.toggle();
@@ -106,18 +98,17 @@ dap.listeners.before.event_exited['dapui_config'] = function()
   shade.toggle();
 end
 
--- Enable virtual text
+-- enable virtual text
 vim.g.dap_virtual_text = true
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Icons                                                    │
+-- │ icons                                                    │
 -- ╰──────────────────────────────────────────────────────────╯
-
 vim.fn.sign_define('DapBreakpoint', { text = '🟥', texthl = '', linehl = '', numhl = '' })
 vim.fn.sign_define('DapStopped', { text = '⭐️', texthl = '', linehl = '', numhl = '' })
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Keybindings                                              │
+-- │ keybindings                                              │
 -- ╰──────────────────────────────────────────────────────────╯
 vim.api.nvim_set_keymap("n", "<Leader>db", "<CMD>lua require('dap').toggle_breakpoint()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader>dc", "<CMD>lua require('dap').continue()<CR>", { noremap = true, silent = true })
@@ -129,17 +120,16 @@ vim.api.nvim_set_keymap("n", "<Leader>dO", "<CMD>lua require('dap').step_over()<
 vim.api.nvim_set_keymap("n", "<Leader>dt", "<CMD>lua require('dap').terminate()<CR>", { noremap = true, silent = true })
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Adapters                                                 │
+-- │ adapters                                                 │
 -- ╰──────────────────────────────────────────────────────────╯
-
--- NODE / TYPESCRIPT
+-- node / typescript
 dap.adapters.node2 = {
   type = 'executable';
   command = 'node',
   args = { vim.fn.stdpath "data" .. '/mason/packages/node-debug2-adapter/out/src/nodeDebug.js' };
 }
 
--- Chrome
+-- chrome
 dap.adapters.chrome = {
   type = 'executable',
   command = 'node',
@@ -147,7 +137,7 @@ dap.adapters.chrome = {
 }
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Configurations                                           │
+-- │ configurations                                           │
 -- ╰──────────────────────────────────────────────────────────╯
 dap.configurations.javascript = {
   {

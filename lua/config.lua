@@ -11,7 +11,7 @@ local icons = require('icons')
 XotoVimGlobal = {
   colorscheme = 'tokyonight',
   -- none, single, double, shadow, rounded
-  ui = { float = { border = 'rounded' } },
+  ui = { float = { border = 'single' } },
 
   plugins = {
     completion = { select_first_on_enter = false },
@@ -34,6 +34,7 @@ XotoVimGlobal = {
   },
 
   lsp = {
+    -- keep off so it wont override other configurations
     virtual_text = false, -- show virtual text (errors, warnings, info) inline messages
   },
 }

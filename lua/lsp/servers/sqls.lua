@@ -1,9 +1,5 @@
 local M = {}
 
-
-
-M.settings = {
-
-}
+M.settings = {}
 
 return M

@@ -12,8 +12,7 @@ require("trouble").setup {
   padding = true, -- add an extra new line on top of the list
 
   action_keys = { -- key mappings for actions in the trouble list
-      -- map to {} to remove a mapping, for example:
-      -- close = {},
+      -- close = {}, -- map to {} to remove a mapping, for example:
       close = "q", -- close the list
       cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
       refresh = "r", -- manually refresh
@@ -40,8 +39,7 @@ require("trouble").setup {
   auto_fold = true, -- automatically fold a file trouble list at creation
   auto_jump = {"lsp_definitions"}, -- for the given modes, automatically jump if there is only a single result
 
-  signs = {
-      -- icons / text used for a diagnostic
+  signs = { -- icons / text used for a diagnostic
       error = icons.errorOutline,
       warning = icons.warningTriangleNoBg,
       hint = icons.lightbulbOutline,

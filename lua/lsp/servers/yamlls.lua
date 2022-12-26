@@ -1,16 +1,10 @@
 local M = {}
 
-
 M.filetypes = {
 	"yml",
 	"yaml"
-  }
-
-
-
-
-M.settings = {
-
 }
+
+M.settings = {}
 
 return M

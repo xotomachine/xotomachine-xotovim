@@ -33,14 +33,8 @@ return function(opts)
         ["stories"] = "{stories.tsx,stories.ts,stories.js,*.stories.tsx,*.stories.ts,*.stories.js}",
         ["test"] = "*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}",
         ["tests"] = "*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}",
-        ["ts"] = {
-          "*.{ts,tsx}",
-          "!*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}"
-        },
-        ["tsx"] = {
-          "*.tsx",
-          "!*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}"
-        },
+        ["ts"] = { "*.{ts,tsx}", "!*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}" },
+        ["tsx"] = { "*.tsx", "!*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}" },
         ["xml"] = "*.xml",
       }
   opts.pattern = opts.pattern or "%s"
@@ -98,7 +92,7 @@ return function(opts)
 
   pickers.new(opts, {
     debounce = 100,
-    prompt_title = "Live Grep (with shortcuts)",
+    prompt_title = "grep (with shortcuts)",
     finder = custom_grep,
     previewer = conf.grep_previewer(opts),
     sorter = require("telescope.sorters").empty(),

@@ -18,16 +18,40 @@ return require('packer').startup({
     use { 'nvim-lua/plenary.nvim' }
     use { 'kyazdani42/nvim-web-devicons' }
     use { 'goolord/alpha-nvim', config = "require('plugins.alpha')" }
+    
+    
+    
+    use {
+      'rmagatti/goto-preview',
+      config = "require('plugins.preview')"
+    }
+    
+    -- use({
+    --   'ray-x/navigator.lua',
+    --   config = "require('plugin.navigator')",
+      
+    --   requires = {
+    --       { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
+    --       { 'neovim/nvim-lspconfig' },
+    --   },
+    -- })
+    
 
     -- Themes
-    
-    use { 'folke/tokyonight.nvim' }
+    -- use { 'folke/tokyonight.nvim' }
     
     use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", config = function() require("lsp_lines").setup() end })
     use { "ahmedkhalf/project.nvim", config = "require('plugins.project')" }
-    -- use { 'sindrets/winshift.nvim', config = "require('plugins.winshift')" }
+    -- use { 'kevinh wang91/rnvimr' }
     use { 'is0n/fm-nvim', config = "require('plugins.fmnvim')" }
-    use { 'abecodes/tabout.nvim', config = "require('plugins.tabout')", wants = {'nvim-treesitter'},  after = {'nvim-cmp'} }
+    -- use { 'kevinhwang91/rnvimr', config = "require('plugins.fmnvim')" }
+    -- use { 'abecodes/tabout.nvim', config = "require('plugins.tabout')", wants = {'nvim-treesitter'},  after = {'nvim-cmp'} }
+    
+	-- lua: tabout.nvim
+	use {
+		'lilibyte/tabhula.nvim',
+		  config = "require('plugins.tabula')",
+	}
 
     -- Treesitter
     use { 'nvim-treesitter/nvim-treesitter', config = "require('plugins.treesitter')" }
@@ -37,29 +61,20 @@ return require('packer').startup({
 
     -- Navigating (Telescope/Tree/Refactor)
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-    use { 'nvim-telescope/telescope.nvim',
-      config = "require('plugins.telescope')",
-      requires = {
-        { 'nvim-lua/popup.nvim' },
-        { 'nvim-lua/plenary.nvim' },
-        { 'nvim-telescope/telescope-fzf-native.nvim' }
-      }
-    }
+    use { 'nvim-telescope/telescope.nvim', config = "require('plugins.telescope')", requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzf-native.nvim' } } }
     use { 'cljoly/telescope-repo.nvim' }
     use { 'kevinhwang91/nvim-bqf', ft = 'qf' }
     use { 'nvim-pack/nvim-spectre' }
     use { 'kyazdani42/nvim-tree.lua', config = "require('plugins.tree')" }
-    use { 'gbprod/stay-in-place.nvim',
-      config = function()
-        require('stay-in-place').setup({})
-      end
-    }
+    use { 'gbprod/stay-in-place.nvim', config = function() require('stay-in-place').setup({}) end }
 
     -- LSP Base
     use { 'williamboman/mason.nvim' }
     use { 'williamboman/mason-lspconfig.nvim' }
     use { 'neovim/nvim-lspconfig' }
 
+    -- or, to get rolling updates
+    
     -- LSP Cmp
     use { 'hrsh7th/nvim-cmp', event = 'InsertEnter', config = "require('plugins.cmp')" }
     use { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' }
@@ -69,12 +84,14 @@ return require('packer').startup({
     use { 'hrsh7th/cmp-cmdline', after = 'cmp-path' }
     use { 'hrsh7th/cmp-calc', after = 'cmp-cmdline' }
     use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp', after = 'cmp-calc' }
-    use { 'David-Kunz/cmp-npm', after = 'cmp-tabnine', requires = 'nvim-lua/plenary.nvim',
-      config = "require('plugins.cmp-npm')" }
+    use { 'David-Kunz/cmp-npm', after = 'cmp-tabnine', requires = 'nvim-lua/plenary.nvim', config = "require('plugins.cmp-npm')" }
     use { 'saadparwaiz1/cmp_luasnip', after = 'cmp-npm' }
 
     -- LSP Addons
-    use { 'stevearc/dressing.nvim', requires = 'MunifTanjim/nui.nvim', config = "require('plugins.dressing')" }
+    
+    use {'nvim-telescope/telescope-ui-select.nvim' }
+
+    -- use { 'stevearc/dressing.nvim', requires = 'MunifTanjim/nui.nvim', config = "require('plugins.dressing')" }
     use { 'onsails/lspkind-nvim' }
     use { 'folke/lsp-trouble.nvim', config = "require('plugins.trouble')" }
     use { 'nvim-lua/popup.nvim' }
@@ -97,22 +114,24 @@ return require('packer').startup({
     use { 'nacro90/numb.nvim', config = "require('plugins.numb')" }
     use { 'folke/todo-comments.nvim', config = "require('plugins.todo-comments')" }
     use { 'folke/zen-mode.nvim', config = "require('plugins.zen')", disable = not XotoVimGlobal.plugins.zen.enabled }
-    use { 'folke/twilight.nvim', config = function() require("twilight").setup {} end,
-      disable = not XotoVimGlobal.plugins.zen.enabled }
+    use { 'folke/twilight.nvim', config = function() require("twilight").setup {} end, disable = not XotoVimGlobal.plugins.zen.enabled }
     use { 'ggandor/lightspeed.nvim', config = "require('plugins.lightspeed')" }
     use { 'folke/which-key.nvim', config = "require('plugins.which-key')", event = "BufWinEnter" }
     -- use { 'ecosse3/galaxyline.nvim', after = 'nvim-gps', config = "require('plugins.galaxyline')", event = "BufWinEnter" }
-    use { 'romgrk/barbar.nvim', requires = { 'kyazdani42/nvim-web-devicons' },
-      config = "require('plugins.barbar')" }
+    use { 'romgrk/barbar.nvim', requires = { 'kyazdani42/nvim-web-devicons' }, config = "require('plugins.barbar')" }
     use { 'antoinemadec/FixCursorHold.nvim' } -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
     use { 'rcarriga/nvim-notify' }
     use { 'vuki656/package-info.nvim', event = "BufEnter package.json", config = "require('plugins.package-info')" }
-    use { 'iamcco/markdown-preview.nvim', run = "cd app && npm install",
-      setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" } }
+    use { 'iamcco/markdown-preview.nvim', run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" } }
     use { 'declancm/cinnamon.nvim', config = "require('plugins.cinnamon')" }
     use { 'airblade/vim-rooter', setup = function() vim.g.rooter_patterns = XotoVimGlobal.plugins.rooter.patterns end }
     use { 'Shatur/neovim-session-manager', config = "require('plugins.session-manager')" }
-    use { 'kylechui/nvim-surround', config = function() require("nvim-surround").setup({}) end }
+    
+
+    
+    -- use { 'blackCauldron7/surround.nvim', config = "require('plugins.surround')" }
+    use { 'kylechui/nvim-surround', config = "require('plugins.surround')" }
+    -- use { 'kylechui/nvim-surround', config = function() require("nvim-surround").setup({}) end }
     use { 'sunjon/shade.nvim', config = function() require("shade").setup(); require("shade").toggle(); end }
     use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async', config = "require('plugins.nvim-ufo')" }
     use { 'echasnovski/mini.nvim', config = function() require("mini.align").setup() end }
@@ -125,27 +144,14 @@ return require('packer').startup({
     use { 'L3MON4D3/LuaSnip', requires = { 'rafamadriz/friendly-snippets' }, after = 'cmp_luasnip' }
 
     -- Git
-    use { 'lewis6991/gitsigns.nvim',
-      requires = { 'nvim-lua/plenary.nvim' },
-      config = "require('plugins.git.signs')",
-      event = "BufRead"
-    }
+    use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' }, config = "require('plugins.git.signs')", event = "BufRead" }
     use { 'sindrets/diffview.nvim', config = "require('plugins.git.diffview')" }
     use { 'akinsho/git-conflict.nvim', tag = "*", config = "require('plugins.git.conflict')" }
     use { 'ThePrimeagen/git-worktree.nvim', config = "require('plugins.git.worktree')" }
     use { 'kdheepak/lazygit.nvim' }
 
     -- Testing
-    use {
-      'rcarriga/neotest',
-      requires = {
-        'nvim-lua/plenary.nvim',
-        'nvim-treesitter/nvim-treesitter',
-        'antoinemadec/FixCursorHold.nvim',
-        'haydenmeade/neotest-jest'
-      },
-      config = "require('plugins.neotest')"
-    }
+    use { 'rcarriga/neotest', requires = { 'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter', 'antoinemadec/FixCursorHold.nvim', 'haydenmeade/neotest-jest' }, config = "require('plugins.neotest')" }
 
     -- DAP
     use { 'theHamsta/nvim-dap-virtual-text' }

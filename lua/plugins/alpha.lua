@@ -22,7 +22,6 @@ local header = {
 "  ███░░░███ ░███ ░███  ░███ ███░███ ░███ ░░███ ███   ░███  ░███ ░███ ░███ ",
 " █████ █████░░██████   ░░█████ ░░██████   ░░█████    █████ █████░███ █████",
 "░░░░░ ░░░░░  ░░░░░░     ░░░░░   ░░░░░░     ░░░░░    ░░░░░ ░░░░░ ░░░ ░░░░░ ",
-"                                                                          ",
 }
 
 dashboard.section.header.type = "text";
@@ -32,7 +31,6 @@ dashboard.section.header.opts = { position = "center", hl = "XotoVimHeader" }
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Heading Info                                             │
 -- ╰──────────────────────────────────────────────────────────╯
-
 local thingy = io.popen('echo "$(date +%a) $(date +%d) $(date +%b)" | tr -d "\n"')
 if thingy == nil then return end
 local date = thingy:read("*a")
@@ -71,7 +69,6 @@ local hi_bottom_section = {
 -- │ Buttons                                                  │
 -- ╰──────────────────────────────────────────────────────────╯
 -- Copied from Alpha.nvim source code
-
 local leader = "SPC"
 
 --- @param sc string
@@ -128,7 +125,6 @@ dashboard.section.buttons.val = {
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Footer                                                   │
 -- ╰──────────────────────────────────────────────────────────╯
-
 local function file_exists(file)
   local f = io.open(file, "rb")
   if f then f:close() end
@@ -172,7 +168,6 @@ local section = {
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Setup                                                    │
 -- ╰──────────────────────────────────────────────────────────╯
-
 local opts = {
 
   layout = {

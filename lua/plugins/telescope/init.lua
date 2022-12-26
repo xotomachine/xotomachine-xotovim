@@ -1,19 +1,18 @@
 local actions = require('telescope.actions')
 local previewers = require('telescope.previewers')
 local builtin = require('telescope.builtin')
--- local icons = Xoto.icons;
 
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('repo')
 require('telescope').load_extension('projects')
-require("telescope").load_extension("git_worktree")
--- require("telescope").load_extension("notify")
+require('telescope').load_extension('projects')
+require("telescope").load_extension("ui-select")
 
 local git_icons = {
   -- added = icons.gitAdd,
   -- changed = icons.gitChange,
-  copied = ">",
   -- deleted = icons.gitRemove,
+  copied = ">",
   renamed = "➡",
   unmerged = "‡",
   untracked = "?",
@@ -21,20 +20,10 @@ local git_icons = {
 
 require('telescope').setup {
   defaults = {
-    vimgrep_arguments = {
-      'rg',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case'
-    },
+    vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case' },
     layout_config = {
-      horizontal = {
-        preview_cutoff = 120,
-      },
-      prompt_position = "top",
+      horizontal = { preview_cutoff = 120 },
+      prompt_position = "bottom",
     },
     file_sorter = require('telescope.sorters').get_fzy_sorter,
     prompt_prefix = '  ',
@@ -70,12 +59,19 @@ require('telescope').setup {
       override_generic_sorter = false,
       override_file_sorter = true,
       case_mode = "smart_case",
-    }
+    },
+    ["ui-select"] = {
+      require("telescope.themes").get_cursor {
+              color_devicons = true,
+        
+        
+      },
+      codeactions = true,
+    },
   }
 }
 
--- Implement delta as previewer for diffs
-
+-- implement delta as previewer for diffs
 local M = {}
 
 local delta_bcommits = previewers.new_termopen_previewer {
@@ -119,16 +115,12 @@ M.edit_neovim = function()
       color_devicons = true,
       cwd = "~/.config/nvim",
       previewer = false,
-      prompt_title = "XotoVim Dotfiles",
+      prompt_title = "xotovim dotfiles",
       sorting_strategy = "ascending",
-      winblend = 4,
+      winblend = 0,
       layout_config = {
-        horizontal = {
-          mirror = false,
-        },
-        vertical = {
-          mirror = false,
-        },
+        horizontal = { mirror = false },
+        vertical = { mirror = false },
         prompt_position = "top",
       },
     }))
@@ -144,7 +136,8 @@ M.command_history = function()
   builtin.command_history (
     require('telescope.themes').get_dropdown({
       color_devicons = true,
-      winblend = 4,
+      winblend = 0,
+      
       layout_config = {
         width = function(_, max_columns, _)
           return math.min(max_columns, 150)

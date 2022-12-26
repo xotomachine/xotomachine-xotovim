@@ -1,7 +1,7 @@
 -- Diagnostic config
 
 local codes = {
-  -- Lua
+  -- lua
   no_matching_function = { message = " Can't find a matching function", "redundant-parameter", "ovl_no_viable_function_in_call" },
   empty_block = { message = " That shouldn't be empty here", "empty-block" },
   missing_symbol = { message = " Here should be a symbol", "miss-symbol" },
@@ -16,10 +16,10 @@ local codes = {
   undeclared_variable = { message = " Have you delcared that variable somewhere?", "undeclared_var_use" },
   lowercase_global = { message = " Should that be a global? (if so make it uppercase)", "lowercase-global" },
 
-  -- Typescript
+  -- typescript
   no_console = { icon = "", "no-console" },
 
-  -- Prettier
+  -- prettier
   prettier = { icon = "", "prettier/prettier" }
 }
 
@@ -57,12 +57,10 @@ vim.diagnostic.config({
   signs = true,
   underline = false,
   update_in_insert = false,
-  -- virtual_text = {
-  --   prefix = XotoVimGlobal.icons.caretRight,
-  -- },
+  -- virtual_text = {prefix = XotoVimGlobal.icons.caretRight},
 })
 
--- UI
+-- ui
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
 for type, icon in pairs(signs) do

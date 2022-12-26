@@ -4,6 +4,8 @@ M.filetypes = {
   "vue"
 }
 
+M.settings = {}
+
 M.init_options = {
   config = {
     css = {},

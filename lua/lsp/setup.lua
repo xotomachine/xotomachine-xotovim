@@ -47,8 +47,7 @@ mason_lsp.setup {
   -- Can either be:
   --   - false: Servers are not automatically installed.
   --   - true: All servers set up via lspconfig are automatically installed.
-  --   - { exclude: string[] }: All servers set up via lspconfig, except the ones provided in the list, are automatically installed.
-  --       Example: automatic_installation = { exclude = { "rust_analyzer", "solargraph" } }
+  --  { exclude: string[] }: All servers set up via lspconfig, except the ones provided in the list, are automatically installed.  -- example: automatic_installation = { exclude = { "rust_analyzer", "solargraph" } }
   automatic_installation = true,
 }
 
@@ -71,15 +70,13 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true
 }
 
--- Order matters
-
--- It enables tsserver automatically so no need to call lspconfig.tsserver.setup
+-- order matters
+-- it enables tsserver automatically so no need to call lspconfig.tsserver.setup
 if typescript_ok then
   typescript.setup({
     disable_commands = false, -- prevent the plugin from creating Vim commands
     debug = false, -- enable debug logging for commands
-    -- LSP Config options
-    server = {
+    server = { -- lsp config options
       capabilities = require('lsp.servers.tsserver').capabilities,
       handlers = require('lsp.servers.tsserver').handlers,
       on_attach = require('lsp.servers.tsserver').on_attach,
@@ -111,7 +108,7 @@ lspconfig.eslint.setup {
   settings = require('lsp.servers.eslint').settings,
 }
 
--- NEW 
+-- new 
 
 lspconfig.angularls.setup {
   capabilities = capabilities,
@@ -180,7 +177,7 @@ lspconfig.stylelint_lsp.setup {
   settings = require('lsp.servers.stylelint_lsp').settings,
 }
 
--- NEW 
+-- new 
 
 lspconfig.jsonls.setup {
   capabilities = capabilities,
@@ -196,23 +193,16 @@ lspconfig.sumneko_lua.setup {
   settings = require('lsp.servers.sumneko_lua').settings,
 }
 
--- lspconfig.vuels.setup {
---   filetypes = require('lsp.servers.vuels').filetypes,
---   handlers = handlers,
---   init_options = require('lsp.servers.vuels').init_options,
---   on_attach = on_attach,
--- }
-
 lspconfig.volar.setup {
   filetypes = require('lsp.servers.volar').filetypes,
   handlers = handlers,
-  init_options = require('lsp.servers.volar').init_options,
   on_attach = on_attach,
   capabilities = capabilities,
+  init_options = require('lsp.servers.volar').init_options,
+  settings = require('lsp.servers.volar').settings,
 }
 
-for _, server in ipairs { "bashls", "emmet_ls", "graphql", "html", "prismals" } do
--- for _, server in ipairs { "bashls", "emmet_ls", "graphql", "html", "volar", "prismals" } do
+for _, server in ipairs { "bashls", "emmet_ls", "graphql", "html", "prismals" } do  -- "volar",
   lspconfig[server].setup {
     on_attach = on_attach,
     capabilities = capabilities,

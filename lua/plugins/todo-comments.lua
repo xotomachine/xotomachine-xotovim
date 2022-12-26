@@ -4,16 +4,15 @@ if not status_ok then
 end
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Setup                                                    │
+-- │ setup                                                    │
 -- ╰──────────────────────────────────────────────────────────╯
 todo_comments.setup {
 
   signs = false, -- show icons in the signs column
   sign_priority = 8, -- sign priority
-  -- keywords recognized as todo comments
 
   keywords = {
-    FIX = { alt = { "FIXME", "BUG", "FIXIT", "ISSUE" } }, -- a set of other keywords that all map to this FIX keywords
+    FIX = { alt = { "FIXME", "BUG", "FIXIT", "ISSUE" } }, -- a set of other keywords that all map to this fix keywords
     WARN = { alt = { "WARNING" } },
     PERF = { alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
   },
@@ -31,7 +30,7 @@ todo_comments.setup {
 }
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │  Keymappings                                             │
+-- │  keymappings                                             │
 -- ╰──────────────────────────────────────────────────────────╯
 
 vim.keymap.set("n", "]t", function() require("todo-comments").jump_next() end, { desc = "Next todo comment" })

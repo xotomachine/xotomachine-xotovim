@@ -8,8 +8,7 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true
 }
 
--- Settings
-
+-- settings
 local on_attach = function(client, bufnr)
   if client.server_capabilities.colorProvider then
     require "lsp/utils/documentcolors".buf_attach(bufnr)

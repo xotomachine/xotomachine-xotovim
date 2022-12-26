@@ -5,16 +5,13 @@ local bufferline_api = require('bufferline.api')
 local TREE_WIDTH = 30
 
 local git_icons = {
-    -- added = "",
-    -- changed = "柳",
-    -- copied = ">",
     unstaged = "",
     staged = "",
     unmerged = "",
     renamed = "➜",
     untracked = "",
     deleted = "",
-    ignored = "◌"
+    ignored = " "
 }
 
 local folders = {
@@ -29,8 +26,6 @@ local folders = {
 
 local keymappings = {
   { key = {"<CR>", "o", "<2-LeftMouse>"}, action = "edit" },
-  -- <C-e> keymapping cannot be set because it's used for toggling nvim-tree
-  -- { key = "<C-e>", action = "edit_in_place" },
   { key = {"O"}, action = "edit_no_picker" },
   { key = {"<2-RightMouse>", "<C-]>"}, action = "cd" },
   { key = "<C-v>", action = "vsplit" },
@@ -79,14 +74,13 @@ require'nvim-tree'.setup {
   hijack_unnamed_buffer_when_opening = false,  -- opens in place of the unnamed buffer if it's empty
   respect_buf_cwd = true,  -- false by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree
 
-  -- show lsp diagnostics in the signcolumn
-  diagnostics = {
+  diagnostics = { -- show lsp diagnostics in the signcolumn
     enable = true,
     icons = {
-      hint = " ",
-      info = " ",
-      warning = " ",
-      error = " ",
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
     },
   },
 
@@ -131,23 +125,18 @@ require'nvim-tree'.setup {
         },
       },
 
-
     }
   },
 
-  -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
-  update_focused_file = {
+  update_focused_file = { -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
     enable = true,   -- enables the feature
     update_cwd = true,   -- update the root directory of the tree to the one of the folder containing the file if the file is not under the current root directory. only relevant when `update_focused_file.enable` is true
     ignore_list = {}   -- list of buffer names / filetypes that will not update the cwd if the file isn't found under the current root directory only relevant when `update_focused_file.update_cwd` is true and `update_focused_file.enable` is true
   },
 
-  -- configuration options for the system open command (`s` in the tree by default)
-  system_open = {
-    -- the command to run this, leaving nil should work in most cases
-    cmd = "",
-    -- the command arguments as a list
-    args = {}
+  system_open = {  -- configuration options for the system open command (`s` in the tree by default)
+    cmd = "",  -- the command to run this, leaving nil should work in most cases
+    args = {}  -- the command arguments as a list
   },
 
   filters = {
@@ -172,9 +161,8 @@ require'nvim-tree'.setup {
     },
 
     open_file = {
-      quit_on_open = false,
-      -- if true the tree will resize itself after opening a file
-      resize_window = true,
+      quit_on_open = false, 
+      resize_window = true, -- if true the tree will resize itself after opening a file
 
       window_picker = {
         enable = false,
@@ -188,23 +176,21 @@ require'nvim-tree'.setup {
   },
 
   view = {
-    -- adaptive_size = true,
+    adaptive_size = false,
     signcolumn = "yes",
-
     number = false,
-    -- width of the window, can be either a number (columns) or a string in `%`
-    width = TREE_WIDTH,
+    width = TREE_WIDTH, -- width of the window, can be either a number (columns) or a string in `%`
     hide_root_folder = false,
-    -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
-    side = 'left',
+    side = 'left',  -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
 
     mappings = {
-      custom_only = true,       -- custom only false will merge the list with the default mappings. if true, it will only use your list to set the mappings
-      list = keymappings       -- list of mappings to set on the tree manually
+      custom_only = true, -- custom only false will merge the list with the default mappings. if true, it will only use your list to set the mappings
+      list = keymappings -- list of mappings to set on the tree manually
     },
 
     relativenumber = false,
-
+    
+    
     float = {
       enable = false,
       quit_on_focus_loss = true,
@@ -212,9 +198,6 @@ require'nvim-tree'.setup {
         relative = "editor",
         border = XotoVimGlobal.ui.float.border,
         width = math.floor(vim.fn.winwidth(0)),
-        -- height = 30,
-        -- row = 1,
-        -- col = 1,
       },
     },
 
@@ -224,7 +207,6 @@ require'nvim-tree'.setup {
     cmd = "trash",
     require_confirm = true
   },
-
 
   log = {
     enable = false,
@@ -245,7 +227,7 @@ vim.api.nvim_set_keymap("n", "<C-e>", "<cmd>lua require'nvim-tree'.toggle()<CR>"
 nvim_tree_events.on_tree_open(function ()
     -- bufferline_api.set_offset(utils.add_whitespaces(0) .. 'file explorer')
     -- bufferline_api.set_offset(TREE_WIDTH + 1, utils.add_whitespaces(0) .. 'file explorer')
-    bufferline_api.set_offset(TREE_WIDTH + 1, utils.add_whitespaces(1) .. 'EXPLORER')
+    bufferline_api.set_offset(TREE_WIDTH + 3, utils.add_whitespaces(1) .. ' PROJECT')
 end)
 
 nvim_tree_events.on_tree_close(function ()

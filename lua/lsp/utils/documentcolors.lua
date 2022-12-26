@@ -1,4 +1,4 @@
--- Credits:
+-- credits:
 -- contains some code snippets from https://github.com/norcalli/nvim-colorizer.lua
 -- yanked from https://github.com/kabouzeid dotfiles
 local bit = require "bit"
@@ -9,16 +9,16 @@ local function lsp_color_to_hex(color)
                            to256(color.blue)), 6)
 end
 
--- Determine whether to use black or white text
--- Ref: https://stackoverflow.com/a/1855903/837964
+-- determine whether to use black or white text
+-- ref: https://stackoverflow.com/a/1855903/837964
 -- https://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color
 local function color_is_bright(r, g, b)
-  -- Counting the perceptive luminance - human eye favors green color
+  -- counting the perceptive luminance - human eye favors green color
   local luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
   if luminance > 0.5 then
-    return true -- Bright colors, black font
+    return true -- bright colors, black font
   else
-    return false -- Dark colors, white font
+    return false -- dark colors, white font
   end
 end
 
@@ -28,7 +28,7 @@ local HIGHLIGHT_MODE_NAMES = { background = "mb", foreground = "mf" }
 
 local HIGHLIGHT_CACHE = {}
 
---- Make a deterministic name for a highlight given these attributes
+--- make a deterministic name for a highlight given these attributes
 local function make_highlight_name(rgb, mode)
   return table.concat({ HIGHLIGHT_NAME_PREFIX, HIGHLIGHT_MODE_NAMES[mode], rgb }, "_")
 end
@@ -40,7 +40,7 @@ local function create_highlight(rgb_hex, options)
 
   if highlight_name then return highlight_name end
 
-  -- Create the highlight
+  -- create the highlight
   highlight_name = make_highlight_name(rgb_hex, mode)
   if mode == "foreground" then
     vim.api.nvim_command(string.format("highlight %s guifg=#%s", highlight_name, rgb_hex))
@@ -90,7 +90,7 @@ local function expand_bufnr(bufnr)
   end
 end
 
---- Can be called to manually update the color highlighting
+--- can be called to manually update the color highlighting
 function M.update_highlight(bufnr, options)
   local params = { textDocument = vim.lsp.util.make_text_document_params() }
   vim.lsp.buf_request(bufnr, "textDocument/documentColor", params, function(err, result, _, _)
@@ -98,7 +98,7 @@ function M.update_highlight(bufnr, options)
   end)
 end
 
---- Should be called `on_attach` when the LSP client attaches
+--- should be called `on_attach` when the lsp client attaches
 function M.buf_attach(bufnr, options)
   bufnr = expand_bufnr(bufnr)
   if ATTACHED_BUFFERS[bufnr] then return end
@@ -106,12 +106,12 @@ function M.buf_attach(bufnr, options)
 
   options = options or {}
 
-  -- VSCode extension also does 200ms debouncing
+  -- vscode extension also does 200ms debouncing
   local trigger_update_highlight, timer = require"lsp/utils/defer".debounce_trailing(M.update_highlight, options.debounce or 200, false)
 
   -- for the first request, the server needs some time before it's ready
   -- sometimes 200ms is not enough for this
-  -- TODO: figure out when the first request can be send
+  -- todo: figure out when the first request can be send
   trigger_update_highlight(bufnr, options)
 
   -- react to changes
@@ -127,7 +127,7 @@ function M.buf_attach(bufnr, options)
   })
 end
 
---- Can be used to detach from the buffer at any time
+-- can be used to detach from the buffer at any time
 function M.buf_detach(bufnr)
   bufnr = expand_bufnr(bufnr)
   vim.api.nvim_buf_clear_namespace(bufnr, NAMESPACE, 0, -1)

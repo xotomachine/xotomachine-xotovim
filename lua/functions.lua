@@ -14,7 +14,6 @@ M.first_xotovim_run = function()
   if is_first_run then
     async.run(function()
       require('notify')("welcome to xotovim! hope you'll have a nice experience!", "info", { title = "xotovim", timeout = 5000 })
-      -- require('notify')("install treesitter servers manually with :TSInstall command.", "info", { title = "Installation", timeout = 10000 })
     end)
     local suc = os.remove('/tmp/first-xotovim-run')
     if (not suc) then print("error: couldn't remove /tmp/first-xotovim-run!") end

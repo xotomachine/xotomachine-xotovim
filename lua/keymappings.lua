@@ -99,7 +99,7 @@ keymap("v", "<Leader>pr", "<cmd>lua require('spectre').open_visual()<CR>")
 -- LSP
 keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", silent)
 keymap("n", "gr", "<cmd>lua vim.lsp.buf.references({ includeDeclaration = false })<CR>", silent)
-keymap("n", "<C-Space>", "<cmd>lua vim.lsp.buf.code_action()<CR>", silent)
+-- keymap("n", "<C-Space>", "<cmd>lua vim.lsp.buf.code_action()<CR>", silent)
 keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", silent)
 -- keymap("v", "<leader>la", "<cmd>'<,'>lua vim.lsp.buf.range_code_action()<CR>", silent)
 keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", silent)
@@ -108,8 +108,8 @@ keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", s
 keymap("n", "<leader>ll", "<cmd>lua vim.diagnostic.open_float({ border = 'rounded', max_width = 100 })<CR>", silent)
 keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float({ border = 'rounded', max_width = 100 })<CR>", silent)
 keymap("n", "L", "<cmd>lua vim.lsp.buf.signature_help()<CR>", silent)
-keymap("n", "]g", "<cmd>lua vim.diagnostic.goto_next({ float = { border = 'rounded', max_width = 100 }})<CR>", silent)
-keymap("n", "[g", "<cmd>lua vim.diagnostic.goto_prev({ float = { border = 'rounded', max_width = 100 }})<CR>", silent)
+keymap("n", "]g", "<cmd>lua vim.diagnostic.goto_next()<CR>", silent)
+keymap("n", "[g", "<cmd>lua vim.diagnostic.goto_prev()<CR>", silent)
 
 keymap("n", "K", function()
     local winid = require('ufo').peekFoldedLinesUnderCursor()
@@ -118,6 +118,10 @@ keymap("n", "K", function()
     end
 end)
 
--- -- Comment Box
--- keymap("n", "<leader>ac", "<cmd>lua require('comment-box').lbox()<CR>", silent)
--- keymap("v", "<leader>ac", "<cmd>lua require('comment-box').lbox()<CR>", silent)
+-- keymap("n", "K", function()  
+--   local params = vim.lsp.util.make_position_params()
+--   return vim.lsp.buf_request(0, 'textDocument/definition', params, preview_location_callback)
+-- end)
+
+vim.api.nvim_set_keymap("n", "gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", {noremap=true})
+vim.api.nvim_set_keymap("n", "gpq", "<cmd>lua require('goto-preview').close_all_win()<CR>", {noremap=true})

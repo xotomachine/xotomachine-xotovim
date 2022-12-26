@@ -11,19 +11,19 @@ require('cinnamon').setup {
 -- │ Keymappings                                              │
 -- ╰──────────────────────────────────────────────────────────╯
 
--- -- Half-window movements:
+-- -- half-window movements:
 -- vim.keymap.set({ 'n', 'x', 'i' }, '<C-u>', "<Cmd>lua Scroll('<C-u>')<CR>")
 -- vim.keymap.set({ 'n', 'x', 'i' }, '<C-d>', "<Cmd>lua Scroll('<C-d>')<CR>")
 
--- -- Page movements:
+-- -- page movements:
 -- vim.keymap.set('n', '<PageUp>', "<Cmd>lua Scroll('<C-b>', 1, 1)<CR>")
 -- vim.keymap.set('n', '<PageDown>', "<Cmd>lua Scroll('<C-f>', 1, 1)<CR>")
 
--- -- Paragraph movements:
+-- -- paragraph movements:
 -- vim.keymap.set({ 'n', 'x' }, '{', "<Cmd>lua Scroll('{', 0)<CR>")
 -- vim.keymap.set({ 'n', 'x' }, '}', "<Cmd>lua Scroll('}', 0)<CR>")
 
--- -- Previous/next search result:
+-- -- previous/next search result:
 -- vim.keymap.set('n', 'n', "<Cmd>lua Scroll('n')<CR>")
 -- vim.keymap.set('n', 'N', "<Cmd>lua Scroll('N')<CR>")
 -- vim.keymap.set('n', '*', "<Cmd>lua Scroll('*')<CR>")
@@ -31,7 +31,7 @@ require('cinnamon').setup {
 -- vim.keymap.set('n', 'g*', "<Cmd>lua Scroll('g*')<CR>")
 -- vim.keymap.set('n', 'g#', "<Cmd>lua Scroll('g#')<CR>")
 
--- -- Window scrolling:
+-- -- window scrolling:
 -- vim.keymap.set('n', 'zz', "<Cmd>lua Scroll('zz', 0, 1)<CR>")
 -- vim.keymap.set('n', 'zt', "<Cmd>lua Scroll('zt', 0, 1)<CR>")
 -- vim.keymap.set('n', 'zb', "<Cmd>lua Scroll('zb', 0, 1)<CR>")

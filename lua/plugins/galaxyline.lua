@@ -1,3 +1,6 @@
+-- TODO THIS VERY NICE!
+
+
 -- -- </> my custom galaxyline
 
 -- -- </> setup

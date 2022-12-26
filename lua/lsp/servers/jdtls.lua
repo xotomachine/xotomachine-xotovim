@@ -2,11 +2,8 @@ local M = {}
 
 M.filetypes = {
 	"java"
-  }
-  
-
-M.settings = {
-
 }
+
+M.settings = {}
 
 return M

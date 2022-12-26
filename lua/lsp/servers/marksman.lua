@@ -1,15 +1,9 @@
 local M = {}
 
-
-
 M.filetypes = {
 	"md"
-  }
-  
-
-
-M.settings = {
-
 }
+  
+M.settings = {}
 
 return M

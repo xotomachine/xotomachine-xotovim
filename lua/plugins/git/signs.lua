@@ -16,10 +16,10 @@ signs.setup {
     changedelete = { hl = 'GitGutterChange', text = '~', numhl = 'GitSignsChangeNr' },
   },
 
-  signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-  numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
-  linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
-  word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
+  signcolumn = true, -- toggle with `:gitsigns toggle_signs`
+  numhl = false, -- toggle with `:gitsigns toggle_numhl`
+  linehl = false, -- toggle with `:gitsigns toggle_linehl`
+  word_diff = false, -- toggle with `:gitsigns toggle_word_diff`
 
   watch_gitdir = {
     interval = 700,
@@ -27,7 +27,7 @@ signs.setup {
   },
 
   attach_to_untracked = true,
-  current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+  current_line_blame = true, -- toggle with `:gitsigns toggle_current_line_blame`
 
   current_line_blame_opts = {
     virt_text = true,
@@ -39,11 +39,10 @@ signs.setup {
   current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
   sign_priority = 6,
   update_debounce = 100,
-  status_formatter = nil, -- Use default
+  status_formatter = nil, -- use default
   max_file_length = 40000,
 
-  preview_config = {
-    -- Options passed to nvim_open_win
+  preview_config = { -- options passed to nvim_open_win
     border = XotoVimGlobal.ui.float.border,
     style = 'minimal',
     relative = 'cursor',
@@ -65,10 +64,10 @@ signs.setup {
     end
 
     -- ╭──────────────────────────────────────────────────────────╮
-    -- │ Keymappings                                              │
+    -- │ keymappings                                              │
     -- ╰──────────────────────────────────────────────────────────╯
 
-    -- Navigation
+    -- navigation
     map('n', ']c', function()
       if vim.wo.diff then return ']c' end
       vim.schedule(function() gs.next_hunk() end)
@@ -81,7 +80,7 @@ signs.setup {
       return '<Ignore>'
     end, { expr = true })
 
-    -- Actions
+    -- actions
     map({ 'n', 'v' }, '<leader>ghs', gs.stage_hunk)
     map({ 'n', 'v' }, '<leader>ghr', gs.reset_hunk)
     map('n', '<leader>ghS', gs.stage_buffer)
@@ -92,7 +91,7 @@ signs.setup {
     map('n', '<leader>ghd', gs.diffthis)
     map('n', '<leader>ght', gs.toggle_deleted)
 
-    -- Text object
+    -- text object
     map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
   end
 }

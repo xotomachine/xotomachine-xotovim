@@ -2,6 +2,7 @@ local M = {}
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+-- completion items
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.preselectSupport = true
 capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
@@ -18,6 +19,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   }
 }
 
+-- code actions
 capabilities.textDocument.codeAction = {
   dynamicRegistration = false,
   codeActionLiteralSupport = {
@@ -35,23 +37,23 @@ capabilities.textDocument.codeAction = {
     },
   },
 }
+
+-- folding range
 capabilities.textDocument.foldingRange = {
   dynamicRegistration = false,
   lineFoldingOnly = true
 }
 
 local on_attach = function(client, bufnr)
-  -- Modifying a server's capabilities is not recommended and is no longer
-  -- necessary thanks to the `vim.lsp.buf.format` API introduced in Neovim
-  -- 0.8. Users with Neovim 0.7 needs to uncomment below lines to make tsserver formatting work (or keep using eslint).
+  -- modifying a server's capabilities is not recommended and is no longer
+  -- necessary thanks to the `vim.lsp.buf.format` api introduced in neovim
+  -- 0.8. users with neovim 0.7 needs to uncomment below lines to make tsserver formatting work (or keep using eslint).
 
   -- client.server_capabilities.documentFormattingProvider = false
   -- client.server_capabilities.documentRangeFormattingProvider = false
 
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
   require("lsp-inlayhints").on_attach(client, bufnr)
 end
 
@@ -71,7 +73,7 @@ local function filter(arr, fn)
 end
 
 local function filterReactDTS(value)
-  -- Depending on typescript version either uri or targetUri is returned
+  -- depending on typescript version either uri or targetUri is returned
   if value.uri then
     return string.match(value.uri, '%.d.ts') == nil
   elseif value.targetUri then
@@ -96,25 +98,25 @@ local settings = {
 
   typescript = {
     inlayHints = {
-      -- includeInlayParameterNameHints = 'all',
+      includeInlayParameterNameHints = 'none', -- 'none' | 'literals' | 'all';
       includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-      -- includeInlayFunctionParameterTypeHints = true,
+      includeInlayFunctionParameterTypeHints = false,
       includeInlayVariableTypeHints = false,
-      -- includeInlayPropertyDeclarationTypeHints = true,
+      includeInlayPropertyDeclarationTypeHints = false,
       includeInlayFunctionLikeReturnTypeHints = false,
-      -- includeInlayEnumMemberValueHints = true,
+      includeInlayEnumMemberValueHints = false,
     }
   },
 
   javascript = {
     inlayHints = {
-      -- includeInlayParameterNameHints = 'all',
+      includeInlayParameterNameHints = 'none', -- 'none' | 'literals' | 'all';
       includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-      -- includeInlayFunctionParameterTypeHints = true,
+      includeInlayFunctionParameterTypeHints = false,
       includeInlayVariableTypeHints = false,
-      -- includeInlayPropertyDeclarationTypeHints = true,
+      includeInlayPropertyDeclarationTypeHints = false,
       includeInlayFunctionLikeReturnTypeHints = false,
-      -- includeInlayEnumMemberValueHints = true,
+      includeInlayEnumMemberValueHints = false,
     }
   }
 

@@ -1,13 +1,10 @@
 require("toggleterm").setup {
-
-  -- size can be a number or function which is passed the current terminal
-  size = function(term)
+  
+  size = function(term) -- size can be a number or function which is passed the current terminal
     if term.direction == "horizontal" then
       return 20
     elseif term.direction == "vertical" then
       return vim.o.columns * 0.4
-    -- elseif term.direction == "float" then
-    --   return vim.o.columns * 0.4
     end
   end,
 
@@ -16,9 +13,7 @@ require("toggleterm").setup {
 
   highlights = {
 
-    -- highlights which map to a highlight group name and a table of it's values
-    -- NOTE: this is only a subset of values, any group placed here will be set for the terminal window split
-    Normal = {
+    Normal = { -- highlights which map to a highlight group name and a table of it's values -- NOTE: this is only a subset of values, any group placed here will be set for the terminal window split
       link = 'Normal'
     },
 
@@ -27,9 +22,7 @@ require("toggleterm").setup {
     },
 
     FloatBorder = {
-      -- guifg = <VALUE-HERE>,
-      -- guibg = <VALUE-HERE>,
-      link = 'FloatBorder'
+      link = 'FloatBorder' -- guifg = <VALUE-HERE>, -- guibg = <VALUE-HERE>,
     },
   },
 
@@ -43,16 +36,10 @@ require("toggleterm").setup {
   close_on_exit = true, -- close the terminal window when the process exits
   shell = vim.o.shell, -- change the default shell
 
-  -- This field is only relevant if direction is set to 'float'
-  float_opts = {
-    -- The border key is *almost* the same as 'nvim_win_open'
-    -- see :h nvim_win_open for details on borders however
-    -- the 'curved' border is a custom border type
-    -- not natively supported but implemented in this plugin.
-    border = 'curved', -- single/double/shadow/curved
+  float_opts = { 
+    border = 'curved', -- single/double/shadow/curved -- The border key is *almost* the same as 'nvim_win_open' -- see :h nvim_win_open for details on borders however -- the 'curved' border is a custom border type -- not natively supported but implemented in this plugin.
     width = math.floor(1.0 * vim.fn.winwidth(0)),
-    height = math.floor(0.8 * vim.fn.winheight(0)),
-    -- winblend = 4,
+    height = math.floor(0.8 * vim.fn.winheight(0))
   },
 
   winbar = {
