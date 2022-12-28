@@ -175,7 +175,7 @@ function backup_old_config() {
 }
 
 function remove_current_repo() {
-  cd $HOME
+  cd "$HOME" || exit
   msg "${BOLD}Removing current Neovim configuration... ${NC}"
   rm -rf "$RUNTIME_DIR"
   rm -rf "$CONFIG_DIR"
@@ -191,7 +191,7 @@ function clone_repo() {
   fi
   echo -e "${GREEN}${BOLD}Done${NC}"
   msg "${BOLD}Moving to XotoVim directory... ${NC}"
-  cd $CONFIG_DIR
+  cd "$CONFIG_DIR" || exit
   echo "${GREEN}${BOLD}Done${NC}"
 }
 
@@ -223,12 +223,12 @@ function setup() {
   [ -d "$PACK_DIR/packer/start/packer.nvim/telescope-fzf-native.nvim" ] && msg "${BOLD}${GREEN}Done${NC}" 1 0
   [ ! -d "$PACK_DIR/packer/start/packer.nvim/telescope-fzf-native.nvim" ] && msg "${BOLD}${RED}Error while installing telescope-fzf-native... Aborting" 1 && exit
 
-  cd "$PACK_DIR/packer/start/packer.nvim/telescope-fzf-native.nvim"
+  cd "$PACK_DIR/packer/start/packer.nvim/telescope-fzf-native.nvim" || exit
   msg "${BOLD}Building telescope-fzf-native...${NC}"
   make
   [ ! -f "$PACK_DIR/packer/start/packer.nvim/telescope-fzf-native.nvim/build/libfzf.so" ] && msg "${BOLD}${RED}Error while building telescope-fzf-native... Aborting" 1 && exit
   [ -f "$PACK_DIR/packer/start/packer.nvim/telescope-fzf-native.nvim/build/libfzf.so" ] && msg "${BOLD}${GREEN}Done${NC}" 1 0
-  cd $CONFIG_DIR/.install
+  cd "$CONFIG_DIR"/.install || exit
 
   msg "${BOLD}Installing plugins...${NC}" 1
   nvim -c 'autocmd User PackerComplete quitall' \

@@ -24,7 +24,10 @@ local options = {
   smartindent    = true, --- makes indenting smart
   smarttab       = true, --- makes tabbing smarter will realize you have 2 vs 4
   softtabstop    = 2, --- insert 2 spaces for a tab
+  
+  splitbelow     = true, -- Splitting a new window below the current one
   splitright     = true, --- vertical splits will automatically be to the right
+  
   swapfile       = false, --- swap not needed
   tabstop        = 2, --- insert 2 spaces for a tab
   termguicolors  = true, --- correct terminal colors
@@ -36,6 +39,11 @@ local options = {
   wildignore     = "*node_modules/**", --- don't search inside node.js modules (works for gutentag)
   wrap           = true, --- display long lines as just one line
   writebackup    = false, --- not needed
+  
+  spelllang      = "en", -- Support US english
+  hidden         = true, -- Ignore unsaved buffers
+  hlsearch       = true, -- Highlight all the matches of search patternhlsearch = true -- Highlight all the matches of search pattern
+  undofile = true, -- Enable persistent undo
   
   -- neovim defaults
   autoindent     = true, --- good auto indent

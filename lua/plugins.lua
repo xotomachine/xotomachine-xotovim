@@ -12,6 +12,8 @@ return require('packer').startup({
   function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
+    
+    use { 'karb94/neoscroll.nvim', config = "require('plugins.smoothscroll')" }
 
     -- Needed to load first
     use { 'lewis6991/impatient.nvim' }
@@ -19,39 +21,13 @@ return require('packer').startup({
     use { 'kyazdani42/nvim-web-devicons' }
     use { 'goolord/alpha-nvim', config = "require('plugins.alpha')" }
     
+    use { 'rmagatti/goto-preview', config = "require('plugins.preview')" }
     
-    
-    use {
-      'rmagatti/goto-preview',
-      config = "require('plugins.preview')"
-    }
-    
-    -- use({
-    --   'ray-x/navigator.lua',
-    --   config = "require('plugin.navigator')",
-      
-    --   requires = {
-    --       { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
-    --       { 'neovim/nvim-lspconfig' },
-    --   },
-    -- })
-    
-
     -- Themes
-    -- use { 'folke/tokyonight.nvim' }
-    
     use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", config = function() require("lsp_lines").setup() end })
     use { "ahmedkhalf/project.nvim", config = "require('plugins.project')" }
-    -- use { 'kevinh wang91/rnvimr' }
     use { 'is0n/fm-nvim', config = "require('plugins.fmnvim')" }
-    -- use { 'kevinhwang91/rnvimr', config = "require('plugins.fmnvim')" }
-    -- use { 'abecodes/tabout.nvim', config = "require('plugins.tabout')", wants = {'nvim-treesitter'},  after = {'nvim-cmp'} }
-    
-	-- lua: tabout.nvim
-	use {
-		'lilibyte/tabhula.nvim',
-		  config = "require('plugins.tabula')",
-	}
+    use { 'lilibyte/tabhula.nvim', config = "require('plugins.tabula')", }
 
     -- Treesitter
     use { 'nvim-treesitter/nvim-treesitter', config = "require('plugins.treesitter')" }
@@ -88,10 +64,12 @@ return require('packer').startup({
     use { 'saadparwaiz1/cmp_luasnip', after = 'cmp-npm' }
 
     -- LSP Addons
+    use { "jose-elias-alvarez/null-ls.nvim", event = "BufRead", config = function() require("plugins.null-ls").config() end }
     
     use {'nvim-telescope/telescope-ui-select.nvim' }
 
     -- use { 'stevearc/dressing.nvim', requires = 'MunifTanjim/nui.nvim', config = "require('plugins.dressing')" }
+    
     use { 'onsails/lspkind-nvim' }
     use { 'folke/lsp-trouble.nvim', config = "require('plugins.trouble')" }
     use { 'nvim-lua/popup.nvim' }
@@ -127,11 +105,7 @@ return require('packer').startup({
     use { 'airblade/vim-rooter', setup = function() vim.g.rooter_patterns = XotoVimGlobal.plugins.rooter.patterns end }
     use { 'Shatur/neovim-session-manager', config = "require('plugins.session-manager')" }
     
-
-    
-    -- use { 'blackCauldron7/surround.nvim', config = "require('plugins.surround')" }
     use { 'kylechui/nvim-surround', config = "require('plugins.surround')" }
-    -- use { 'kylechui/nvim-surround', config = function() require("nvim-surround").setup({}) end }
     use { 'sunjon/shade.nvim', config = function() require("shade").setup(); require("shade").toggle(); end }
     use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async', config = "require('plugins.nvim-ufo')" }
     use { 'echasnovski/mini.nvim', config = function() require("mini.align").setup() end }
