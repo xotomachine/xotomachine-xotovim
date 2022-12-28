@@ -13,15 +13,15 @@ local theme = require("tokyonight.theme")
 
 util.load(theme.setup())
 
--- -- ╭──────────────────────────────────────────────────────────╮
--- -- │ Setup Colorscheme                                        │
--- -- ╰──────────────────────────────────────────────────────────╯
+-- ╭──────────────────────────────────────────────────────────╮
+-- │ Setup Colorscheme                                        │
+-- ╰──────────────────────────────────────────────────────────╯
 -- vim.cmd('colorscheme ' .. XotoVimGlobal.colorscheme) -- Set Colorscheme
 
--- -- IF NIGHTLY
+-- if nightly
 if vim.fn.has("nvim-0.8") then
 
-  -- XOTOVIM COLORS
+  -- xotovim global colors
   vim.api.nvim_set_hl(0, 'XotoVimPrimary', { fg = XotoVimPrimary });
   vim.api.nvim_set_hl(0, 'XotoVimSecondary', { fg = XotoVimSecondary });
   vim.api.nvim_set_hl(0, 'CursorLine', { bg = XotoVimPrimary });
@@ -33,14 +33,14 @@ if vim.fn.has("nvim-0.8") then
   vim.api.nvim_set_hl(0, 'XotoVimHeaderInfo', { bold = true, fg = XotoVimSecondary });
   vim.api.nvim_set_hl(0, 'XotoVimFooter', { bold = true, fg = XotoVimSecondary });
 
-  -- Tokyonight Colorscheme Specific Config
+  -- tokyonight colorscheme specific config
   if XotoVimGlobal.colorscheme == 'tokyonight' then
 
-    -- Lines
+    -- lines
     vim.api.nvim_set_hl(0, 'CursorLineNR', { link = 'XotoVimSecondary' })
     vim.api.nvim_set_hl(0, 'LineNr', { link = 'Comment' })
 
-    -- Floats/Windows
+    -- floats/windows
     vim.api.nvim_set_hl(0, 'NormalFloat', { bg = "None", fg = "None" });
     vim.api.nvim_set_hl(0, 'FloatBorder', { bg = "None", fg = XotoVimPrimaryLight });
     vim.api.nvim_set_hl(0, 'NotifyBackground', { bg = XotoVimPrimaryLight, fg = "None" });
@@ -49,24 +49,20 @@ if vim.fn.has("nvim-0.8") then
     vim.api.nvim_set_hl(0, 'VertSplit', { bg = "None", fg = XotoVimPrimary });
     vim.api.nvim_set_hl(0, 'BqfPreviewBorder', { link = 'FloatBorder' })
 
-    -- Telescope
+    -- telescope
     vim.api.nvim_set_hl(0, 'TelescopeTitle', { link = 'XotoVimSecondary' });
     vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg =  "None" , fg = "None" });
     vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = "None", fg = XotoVimPrimaryLight });
     vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = XotoVimPrimary, fg = "None" });
     vim.api.nvim_set_hl(0, 'TelescopeMatching', { link = 'XotoVimSecondary' });
 
-    -- Tree
+    -- tree
     vim.api.nvim_set_hl(0, 'NvimTreeFolderIcon', { bg = "None", fg = "None" });
-    -- vim.api.nvim_set_hl(0, 'NvimTree', { bg = XotoVimPrimaryLight, fg = XotoVimPrimaryLight});
 
-    -- Diagnostics
-    
     -- autopilot
     vim.api.nvim_set_hl(0, 'CopilotSuggestion', { bg = "None", fg = tokioColor.dark3 });
-    -- vim.api.nvim_set_hl(0, 'GhostTextGroup', { bg = "None", fg = tokioColor.dark3 });
     
-    -- Misc
+    -- misc
     vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { link = 'Comment' });
     vim.api.nvim_set_hl(0, 'StatusLine', { bg = "None" });
     vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = "None" });
@@ -74,7 +70,7 @@ if vim.fn.has("nvim-0.8") then
     vim.api.nvim_set_hl(0, 'Boolean', { fg = "#F7768E" });
     vim.api.nvim_set_hl(0, 'BufferOffset', { link = 'XotoVimSecondary' });
 
-    -- Completion Menu Colors
+    -- completion menu colors
     local highlights = {
       CmpItemAbbr            = { fg = tokioColor.dark3, bg = "NONE" },
       CmpItemKindClass       = { fg = tokioColor.orange },

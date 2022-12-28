@@ -17,9 +17,7 @@ XotoVimGlobal = {
     completion = { select_first_on_enter = false },
 
     rooter = {
-      -- 'package.json''_darcs', '.bzr', '.svn', 'Makefile'}
-      -- Removing package.json from list in Monorepo Frontend Project can be helpful
-      -- By that your live_grep will work related to whole project, not specific package
+      -- 'package.json''_darcs', '.bzr', '.svn', 'Makefile'} removing package.json from list in Monorepo Frontend Project can be helpful by that your live_grep will work related to whole project, not specific package
       patterns = {'.git'} -- Default
     },
 

@@ -164,18 +164,18 @@ local normal_mode_mappings = {
     -- D = { '<cmd>TroubleToggle<CR>', 'local diagnostics' },
 
     d = { "<cmd>Telescope diagnostics<cr>", "diagnostics" },
-    -- f = { require("lvim.lsp.utils").format, "format" },
+    f = { vim.lsp.buf.format, "format" },
     i = { "<cmd>LspInfo<cr>", "info" },
     m = { "<cmd>Mason<cr>", "mason info" },
     n = { vim.diagnostic.goto_next, "next diagnostic", },
     p = { vim.diagnostic.goto_prev, "prev diagnostic", },
     l = { vim.lsp.codelens.run, "codelens action" },
     -- L = { 'line diagnostics' },
-    f = { 'format' },
+    -- f = { 'format' },
     q = { vim.diagnostic.setloclist, "quickfix" },
     t = { "<cmd>Telescope quickfix<cr>", "telescope quickfix" },
-    -- r = { vim.lsp.buf.rename, "rename" },
-    r = { 'rename' },
+    r = { vim.lsp.buf.rename, "rename" },
+    -- r = { 'rename' },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "document symbols" },
     -- S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "workspace symbols", },
 
@@ -380,7 +380,7 @@ local function attach_typescript(bufnr)
   wk.register({
     l = {
       name = "lsp",
-      f = { '<cmd>TypescriptFixAll<CR>', 'fix all' },
+      a = { '<cmd>TypescriptFixAll<CR>', 'fix all' },
       i = { '<cmd>TypescriptAddMissingImports<CR>', 'import all'},
       o = { '<cmd>TypescriptOrganizeImports<CR>', 'organize imports'},
       r = { '<cmd>TypescriptRemoveUnused<CR>', 'remove unused' },

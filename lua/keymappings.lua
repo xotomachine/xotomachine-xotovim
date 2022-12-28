@@ -28,32 +28,32 @@ keymap("i", "<C-s>", "<ESC> :w<CR>", silent)
 
 -- Telescope
 keymap("n", "<C-p>", "<CMD>lua require('plugins.telescope').project_files()<CR>")
-keymap("n", "<S-p>", "<CMD>lua require('plugins.telescope.pickers.multi-rg')()<CR>")
+keymap("n", "<leader>q", "<CMD>lua require('plugins.telescope.pickers.multi-rg')()<CR>")
 
 -- Remove highlights
 keymap("n", "<CR>", ":noh<CR><CR>", silent)
 
 -- Find word/file across project
-keymap("n", "<Leader>pf", "<CMD>lua require('plugins.telescope').project_files({ default_text = vim.fn.expand('<cword>'), initial_mode = 'normal' })<CR>")
-keymap("n", "<Leader>pw", "<CMD>lua require('telescope.builtin').grep_string({ initial_mode = 'normal' })<CR>")
+keymap("n", "<leader>pf", "<CMD>lua require('plugins.telescope').project_files({ default_text = vim.fn.expand('<cword>'), initial_mode = 'normal' })<CR>")
+keymap("n", "<leader>pw", "<CMD>lua require('telescope.builtin').grep_string({ initial_mode = 'normal' })<CR>")
 
 -- Buffers
--- keymap("n", "<Tab>", ":BufferNext<CR>", silent)
+-- keymap("n", "<leader><Tab>", ":BufferNext<CR>", silent)
 keymap("n", "gn", ":bn<CR>", silent)
--- keymap("n", "<S-Tab>", ":BufferPrevious<CR>", silent)
+-- keymap("n", "<leader><Tab>", ":BufferPrevious<CR>", silent)
 keymap("n", "gp", ":bp<CR>", silent)
-keymap("n", "<S-q>", ":BufferClose<CR>", silent)
+keymap("n", "<leader>q", ":BufferClose<CR>", silent)
 
 -- Move between barbar buffers
-keymap("n", "<Space>1", ":BufferGoto 1<CR>", silent)
-keymap("n", "<Space>2", ":BufferGoto 2<CR>", silent)
-keymap("n", "<Space>3", ":BufferGoto 3<CR>", silent)
-keymap("n", "<Space>4", ":BufferGoto 4<CR>", silent)
-keymap("n", "<Space>5", ":BufferGoto 5<CR>", silent)
-keymap("n", "<Space>6", ":BufferGoto 6<CR>", silent)
-keymap("n", "<Space>7", ":BufferGoto 7<CR>", silent)
-keymap("n", "<Space>8", ":BufferGoto 8<CR>", silent)
-keymap("n", "<Space>9", ":BufferGoto 9<CR>", silent)
+keymap("n", "<leader>1", ":BufferGoto 1<CR>", silent)
+keymap("n", "<leader>2", ":BufferGoto 2<CR>", silent)
+keymap("n", "<leader>3", ":BufferGoto 3<CR>", silent)
+keymap("n", "<leader>4", ":BufferGoto 4<CR>", silent)
+keymap("n", "<leader>5", ":BufferGoto 5<CR>", silent)
+keymap("n", "<leader>6", ":BufferGoto 6<CR>", silent)
+keymap("n", "<leader>7", ":BufferGoto 7<CR>", silent)
+keymap("n", "<leader>8", ":BufferGoto 8<CR>", silent)
+keymap("n", "<leader>9", ":BufferGoto 9<CR>", silent)
 
 -- Don't yank on delete char
 keymap("n", "x", '"_x', silent)
@@ -71,8 +71,8 @@ vim.cmd [[
 ]]
 
 -- Quickfix
--- keymap("n", "<Space>,", ":cp<CR>", silent)
--- keymap("n", "<Space>.", ":cn<CR>", silent)
+-- keymap("n", "<leader>,", ":cp<CR>", silent)
+-- keymap("n", "<leader>.", ":cn<CR>", silent)
 
 -- Toggle quicklist
 -- keymap("n", "<leader>q", "<cmd>lua require('utils').toggle_quicklist()<CR>", silent)
@@ -93,8 +93,8 @@ else
 end
 
 -- Refactor with spectre
-keymap("n", "<Leader>pr", "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", silent)
-keymap("v", "<Leader>pr", "<cmd>lua require('spectre').open_visual()<CR>")
+keymap("n", "<leader>pr", "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", silent)
+keymap("v", "<leader>pr", "<cmd>lua require('spectre').open_visual()<CR>")
 
 -- LSP
 keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", silent)

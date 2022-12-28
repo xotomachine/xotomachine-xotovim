@@ -113,7 +113,7 @@ dashboard.section.buttons.val = {
   button("r", icons.history .. " " .. "recent files", ":Telescope oldfiles <CR>", {}),
   button("t", icons.text .. " " .. "find text", "<CMD>Telescope live_grep<CR>", {}),
   -- button("<C-P>", icons.fileNoBg .. " " .. "find file", "<cmd>lua require('plugins.telescope').project_files()<CR>", {}),
-  -- button("<S-P>", icons.t .. " " .. "find word", "<cmd>lua require('plugins.telescope.pickers.multi-rg')()<CR>", {}),
+  -- button("<Leader>P", icons.t .. " " .. "find word", "<cmd>lua require('plugins.telescope.pickers.multi-rg')()<CR>", {}),
   button("SPC s h", icons.fileRecent .. " " .. "recents", "<cmd>Telescope oldfiles hidden=true<CR>", {}),
   button("SPC / s d", icons.timer .. " " .. "load current dir session", "<cmd>SessionManager load_current_dir_session<CR>", {}),
   button("SPC / u", icons.container .. " " .. "update plugins", "<cmd>PackerSync<CR>", {}),
