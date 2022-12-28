@@ -34,7 +34,11 @@ Dashboard
 Copy it into your terminal:
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/xotomachine/xotomachine-xotovim/development/.install/run.sh)
+# install nvim 8
+bash <(curl -s https://raw.githubusercontent.com/xotomachine/xotomachine-xotovim/development/.install/nvim.sh)
+
+# install xotovim
+bash <(curl -s https://raw.githubusercontent.com/xotomachine/xotomachine-xotovim/development/.install/xotovim.sh)
 ```
 
 After install configuration:
