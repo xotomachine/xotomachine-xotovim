@@ -1,11 +1,11 @@
 -- ╭──────────────────────────────────────────────────────────╮
--- │ This is a custom telescope ripgrep picker that           │
+-- │ this is a custom telescope ripgrep picker that           │
 -- │  accepts predefined shortcuts after two spaces in input. │
 -- │                                                          │
--- │ Those shortcuts will filter files by selected            │
+-- │ those shortcuts will filter files by selected            │
 -- │  extension only.                                         │
 -- │                                                          │
--- │ Default keybinding is <S-P>                              │
+-- │ default keybinding is <s-p>                              │
 -- ╰──────────────────────────────────────────────────────────╯
 
 local conf = require("telescope.config").values

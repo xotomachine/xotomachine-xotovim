@@ -4,7 +4,7 @@ local diffview = require("diffview")
 local M = {}
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Custom XotoVim toggle file history function via <leader>gd│
+-- │ custom xotovim toggle file history function via <leader>gd│
 -- ╰──────────────────────────────────────────────────────────╯
 M.toggle_file_history = function ()
   local view = lib.get_current_view()
@@ -20,7 +20,7 @@ M.toggle_file_history = function ()
 end
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Custom XotoVim toggle status function via <leader>gs      │
+-- │ custom xotovim toggle status function via <leader>gs      │
 -- ╰──────────────────────────────────────────────────────────╯
 M.toggle_status = function ()
   local view = lib.get_current_view()

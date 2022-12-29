@@ -76,7 +76,7 @@ wk.setup {
 }
 
 local opts = {
-  mode = "n", -- NORMAL mode
+  mode = "n", -- normal mode
   prefix = "<leader>",
   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
   silent = true, -- use `silent` when creating keymaps
@@ -85,7 +85,7 @@ local opts = {
 }
 
 local visual_opts = {
-  mode = "v", -- NORMAL mode
+  mode = "v", -- normal mode
   prefix = "<leader>",
   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
   silent = true, -- use `silent` when creating keymaps
@@ -354,7 +354,7 @@ local visual_mode_mappings = {
 }
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Register                                                 │
+-- │ register                                                 │
 -- ╰──────────────────────────────────────────────────────────╯
 
 wk.register(normal_mode_mappings, opts)
@@ -368,7 +368,7 @@ local function attach_markdown(bufnr)
     }
   }, {
     buffer = bufnr ,
-    mode = "n", -- NORMAL mode
+    mode = "n", -- normal mode
     prefix = "<leader>",
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
@@ -387,7 +387,7 @@ local function attach_typescript(bufnr)
     }
   }, {
     buffer = bufnr ,
-    mode = "n", -- NORMAL mode
+    mode = "n", -- normal mode
     prefix = "<leader>",
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
@@ -409,7 +409,7 @@ local function attach_npm(bufnr)
     }
   }, {
     buffer = bufnr,
-    mode = "n", -- NORMAL mode
+    mode = "n", -- normal mode
     prefix = "<leader>",
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
@@ -422,7 +422,7 @@ local function attach_zen(bufnr)
     ["z"] = { '<cmd>ZenMode<CR>', 'zen' },
   }, {
     buffer = bufnr,
-    mode = "n", -- NORMAL mode
+    mode = "n", -- normal mode
     prefix = "<leader>",
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
@@ -443,7 +443,7 @@ local function attach_jest(bufnr)
     }
   }, {
     buffer = bufnr,
-    mode = "n", -- NORMAL mode
+    mode = "n", -- normal mode
     prefix = "<leader>",
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
@@ -459,7 +459,7 @@ local function attach_spectre(bufnr)
     ["v"] = { '[SPECTRE] change view mode'},
   }, {
     buffer = bufnr,
-    mode = "n", -- NORMAL mode
+    mode = "n", -- normal mode
     prefix = "<leader>",
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps

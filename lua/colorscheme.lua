@@ -14,7 +14,7 @@ local theme = require("tokyonight.theme")
 util.load(theme.setup())
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Setup Colorscheme                                        │
+-- │ setup colorscheme                                        │
 -- ╰──────────────────────────────────────────────────────────╯
 -- vim.cmd('colorscheme ' .. XotoVimGlobal.colorscheme) -- Set Colorscheme
 
@@ -42,6 +42,7 @@ if vim.fn.has("nvim-0.8") then
 
     -- floats/windows
     vim.api.nvim_set_hl(0, 'NormalFloat', { bg = "None", fg = "None" });
+    vim.api.nvim_set_hl(0, 'RegistersWindow', { bg = "None", fg = "None" });
     vim.api.nvim_set_hl(0, 'FloatBorder', { bg = "None", fg = XotoVimPrimaryLight });
     vim.api.nvim_set_hl(0, 'NotifyBackground', { bg = XotoVimPrimaryLight, fg = "None" });
     vim.api.nvim_set_hl(0, 'WhichKeyFloat', { bg = "None", fg = XotoVimPrimary });

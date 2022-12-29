@@ -24,7 +24,7 @@ end
 require("luasnip/loaders/from_vscode").lazy_load()
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Utils                                                    │
+-- │ utils                                                    │
 -- ╰──────────────────────────────────────────────────────────╯
 local types = require("cmp.types")
 
@@ -39,7 +39,7 @@ local function deprioritize_snippet(entry1, entry2)
 end
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Setup                                                    │
+-- │ setup                                                    │
 -- ╰──────────────────────────────────────────────────────────╯
 local source_mapping = {
   npm = XotoVimGlobal.icons.terminal .. 'NPM',
@@ -188,7 +188,7 @@ cmp.setup {
 }
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Cmdline Setup                                            │
+-- │ cmdline setup                                            │
 -- ╰──────────────────────────────────────────────────────────╯
 cmp.setup.cmdline('/', { -- `/` cmdline setup.
   mapping = cmp.mapping.preset.cmdline(),
@@ -204,7 +204,7 @@ cmp.setup.cmdline(':', {
 })
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Tabnine Setup                                            │
+-- │ tabnine setup                                            │
 -- ╰──────────────────────────────────────────────────────────╯
 tabnine:setup({
   max_lines = 1000;

@@ -43,7 +43,6 @@ local options = {
   spelllang      = "en", -- Support US english
   hidden         = true, -- Ignore unsaved buffers
   hlsearch       = true, -- Highlight all the matches of search patternhlsearch = true -- Highlight all the matches of search pattern
-  undofile = true, -- Enable persistent undo
   
   -- neovim defaults
   autoindent     = true, --- good auto indent

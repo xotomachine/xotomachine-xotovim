@@ -64,7 +64,7 @@ return require('packer').startup({
     use { 'saadparwaiz1/cmp_luasnip', after = 'cmp-npm' }
 
     -- LSP Addons
-    use { "jose-elias-alvarez/null-ls.nvim", event = "BufRead", config = function() require("plugins.null-ls").config() end }
+    -- use { "jose-elias-alvarez/null-ls.nvim", event = "BufRead", config = function() require("plugins.null-ls").config() end }
     
     use {'nvim-telescope/telescope-ui-select.nvim' }
 
@@ -86,7 +86,7 @@ return require('packer').startup({
     use { 'akinsho/nvim-toggleterm.lua', branch = 'main', config = "require('plugins.toggleterm')" }
     use { 'tpope/vim-repeat' }
     use { 'tpope/vim-speeddating' }
-    use { 'dhruvasagar/vim-table-mode' }
+    -- use { 'dhruvasagar/vim-table-mode' }
     use { 'mg979/vim-visual-multi', config = function() vim.g.VM_leader = ";" end }
     use { 'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter' }
     use { 'nacro90/numb.nvim', config = "require('plugins.numb')" }

@@ -4,7 +4,7 @@ if not present then
 end
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Keymappings                                              │
+-- │ keymappings                                              │
 -- ╰──────────────────────────────────────────────────────────╯
 -- Using ufo provider need remap `zR` and `zM`. zr is additional.
 -- vim.keymap.set('n', 'zR', ufo.openAllFolds)
@@ -14,7 +14,7 @@ end
 local M = {}
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Custom handler function                                  │
+-- │ custom handler function                                  │
 -- ╰──────────────────────────────────────────────────────────╯
 M.handler = function(virtText, lnum, endLnum, width, truncate)
   local newVirtText = {}

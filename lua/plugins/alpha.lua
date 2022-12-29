@@ -10,7 +10,7 @@ local fn = vim.fn
 local config_dir = fn.stdpath('config')
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Header                                                   │
+-- │ header                                                   │
 -- ╰──────────────────────────────────────────────────────────╯
 
 local header = {
@@ -29,7 +29,7 @@ dashboard.section.header.val = header;
 dashboard.section.header.opts = { position = "center", hl = "XotoVimHeader" }
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Heading Info                                             │
+-- │ heading info                                             │
 -- ╰──────────────────────────────────────────────────────────╯
 local thingy = io.popen('echo "$(date +%a) $(date +%d) $(date +%b)" | tr -d "\n"')
 if thingy == nil then return end
@@ -66,7 +66,7 @@ local hi_bottom_section = {
 }
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Buttons                                                  │
+-- │ buttons                                                  │
 -- ╰──────────────────────────────────────────────────────────╯
 -- Copied from Alpha.nvim source code
 local leader = "SPC"
@@ -123,7 +123,7 @@ dashboard.section.buttons.val = {
 }
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Footer                                                   │
+-- │ footer                                                   │
 -- ╰──────────────────────────────────────────────────────────╯
 local function file_exists(file)
   local f = io.open(file, "rb")
@@ -166,7 +166,7 @@ local section = {
 }
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Setup                                                    │
+-- │ setup                                                    │
 -- ╰──────────────────────────────────────────────────────────╯
 local opts = {
 
@@ -191,7 +191,7 @@ local opts = {
 alpha.setup(opts)
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Hide tabline and statusline on startup screen            │
+-- │ hide tabline and statusline on startup screen            │
 -- ╰──────────────────────────────────────────────────────────╯
 vim.api.nvim_create_augroup("alpha_tabline", { clear = true })
 
